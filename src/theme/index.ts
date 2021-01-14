@@ -17,7 +17,12 @@ import createPalette from "@material-ui/core/styles/createPalette";
 
 export const createMyTheme = () => {
   const baseTheme = createMuiTheme({
-    palette: createPalette({}),
+    palette: createPalette({
+      divider: "#CFD8DC",
+      text: {
+        secondary: "#666666",
+      },
+    }),
   });
 
   return {

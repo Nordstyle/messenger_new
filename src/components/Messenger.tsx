@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
+import { MessengerOpener } from "./MessengerOpener";
+import { MessengerContainer } from "./MessengerContainer";
+
+import { createMyTheme } from "../theme";
 import { ServiceBase } from "../services/ServiceBase";
 import { ModuleName } from "../constants";
-import { MessengerOpener } from "./MessengerOpener";
-import { createMyTheme } from "../theme";
+import "react-virtualized/styles.css";
 
 export interface MessengerProps {
   idUser: number;
@@ -20,7 +23,7 @@ export interface MessengerProps {
 }
 
 const Messenger: React.FC<MessengerProps> = (props) => {
-  const { idUser, authToken, messengerApi, open, onClose } = props;
+  const { authToken, messengerApi, open, onClose } = props;
   const myTheme = createMyTheme();
 
   useEffect(() => {
@@ -31,7 +34,7 @@ const Messenger: React.FC<MessengerProps> = (props) => {
   return (
     <ThemeProvider theme={myTheme}>
       <MessengerOpener open={open} onClose={onClose}>
-        {idUser}
+        <MessengerContainer />
       </MessengerOpener>
     </ThemeProvider>
   );
