@@ -1,6 +1,5 @@
 import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from "axios";
 import queryString from "querystring";
-import { API } from "../constants/API";
 
 export interface ProcessingResult<T> {
   result: T;
@@ -12,7 +11,7 @@ export interface ProcessingResult<T> {
 }
 
 const api: AxiosInstance = axios.create({
-  baseURL: API.MESSENGER_API,
+  baseURL: null,
   timeout: 300 * 1000,
 });
 
@@ -43,6 +42,10 @@ export abstract class ServiceBase {
       ...this.serviceApi.defaults.headers.common,
       Authorization: `bearer ${token}`,
     };
+  }
+
+  public static setBaseUrl(url: string) {
+    this.serviceApi.defaults.baseURL = url;
   }
 
   public static buildUrl(url: string) {
