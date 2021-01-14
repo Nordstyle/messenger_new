@@ -6,7 +6,6 @@ import { MessengerContainer } from "./MessengerContainer";
 import { createMyTheme } from "../theme";
 import { ServiceBase } from "../services/ServiceBase";
 import { ModuleName } from "../constants";
-import "react-virtualized/styles.css";
 
 export interface MessengerProps {
   idUser: number;

@@ -4,19 +4,18 @@ import { MessengerChatList } from "./MessengerChatList";
 import { MessengerChatContainer } from "./MessengerChatContainer";
 
 const useStyles = makeStyles(() => ({
-  root: {
+  fullHeight: {
     height: "100%",
   },
 }));
 
-export const MessengerContainer = (props: any) => {
-  const { height } = props;
+export const MessengerContainer = () => {
   const classes = useStyles();
 
   return (
-    <Box width="732px" height={height}>
-      <Grid container className={classes.root}>
-        <Grid item>
+    <Box width="732px" height="100%" overflow="hidden">
+      <Grid container className={classes.fullHeight}>
+        <Grid item className={classes.fullHeight}>
           <MessengerChatList />
         </Grid>
         <Grid item>

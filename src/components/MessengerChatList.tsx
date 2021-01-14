@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
   chatList: {
+    height: "calc(100% - 53px)",
     overflowY: "auto",
   },
 }));
@@ -27,6 +28,9 @@ export const MessengerChatList = () => {
     <Box className={classes.root}>
       <Box className={classes.header}>Чаты</Box>
       <Box className={classes.chatList}>
+        <MessengerChatItem />
+        <MessengerChatItem />
+        <MessengerChatItem />
         <MessengerChatItem />
         <MessengerChatItem />
         <MessengerChatItem />

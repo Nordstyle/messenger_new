@@ -68,7 +68,6 @@
     "casual-browserify": "^1.5.19-2",
     "clsx": "^1.1.1",
     "react-uuid": "^1.0.2",
-    "react-virtualized": "^9.22.3",
     "rimraf": "^3.0.2"
   }
 }
