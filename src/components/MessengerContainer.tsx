@@ -16,7 +16,7 @@ export const MessengerContainer = () => {
   const classes = useStyles();
 
   return (
-    <Box width="732px" height="100%" overflow="hidden">
+    <Box className={classes.fullHeight}>
       <Grid container className={classes.fullHeight} wrap="nowrap">
         <Grid item className={classes.fullHeight}>
           <MessengerChatList />
