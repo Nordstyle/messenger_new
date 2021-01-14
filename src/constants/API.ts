@@ -29,7 +29,7 @@ const createProdRoute = createApiLink(serverProd);
 
 const locations = {
   filestorage: "/filestorage-service",
-  messenger: "/messenger-service",
+  messenger: "/messenger-hub-service",
 };
 
 const defaultDevRoutes = {
