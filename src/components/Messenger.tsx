@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { Box } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core/styles";
 import { ServiceBase } from "../services/ServiceBase";
 import { ModuleName } from "../constants";
+import { MessengerOpener } from "./MessengerOpener";
+import { createMyTheme } from "../theme";
 
 export interface MessengerProps {
   idUser: number;
@@ -18,15 +20,20 @@ export interface MessengerProps {
 }
 
 const Messenger: React.FC<MessengerProps> = (props) => {
-  const { idUser, authToken, messengerApi } = props;
+  const { idUser, authToken, messengerApi, open, onClose } = props;
+  const myTheme = createMyTheme();
 
   useEffect(() => {
     ServiceBase.setAuthToken(authToken);
     ServiceBase.setBaseUrl(messengerApi);
   }, [authToken, messengerApi]);
 
-  useEffect(() => {}, []);
-
-  return <Box>{idUser}</Box>;
+  return (
+    <ThemeProvider theme={myTheme}>
+      <MessengerOpener open={open} onClose={onClose}>
+        {idUser}
+      </MessengerOpener>
+    </ThemeProvider>
+  );
 };
 export default Messenger;
