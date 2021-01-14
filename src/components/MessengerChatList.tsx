@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "28px",
     fontWeight: "bold",
     borderBottom: `1px solid ${theme.palette.divider}`,
+    height: "52px",
   },
   chatList: {
     height: "calc(100% - 53px)",
