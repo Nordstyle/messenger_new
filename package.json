@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "cross-env NODE_ENV=production && rimraf dist && rollup -c",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 9000 --https --ssl-cert ./stecpoint.crt --ssl-key ./stecpoint.key",
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
