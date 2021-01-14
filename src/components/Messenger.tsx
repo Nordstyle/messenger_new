@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Box } from "@material-ui/core";
-import { ModuleName } from "../constants";
 import { ServiceBase } from "../services/ServiceBase";
+import { ModuleName } from "../constants";
 
 export interface MessengerProps {
   idUser: number;
@@ -14,7 +14,7 @@ export interface MessengerProps {
   open: boolean;
   defaultChatId?: number;
   userNotificationFields?: Record<string, string>;
-  onClose: () => any;
+  onClose: () => void;
 }
 
 const Messenger: React.FC<MessengerProps> = (props) => {
