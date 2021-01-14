@@ -12,7 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "cross-env NODE_ENV=production && rm -rf dist && rollup -c",
+    "build": "cross-env NODE_ENV=production && rimraf dist && rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -60,12 +60,13 @@
     "react-dom": ">=17.0.1"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@use-it/event-listener": "^0.1.6",
     "casual-browserify": "^1.5.19-2",
     "clsx": "^1.1.1",
     "react-uuid": "^1.0.2",
-    "@material-ui/core": "^4.11.2",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57"
+    "rimraf": "^3.0.2"
   }
 }
