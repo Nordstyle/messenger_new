@@ -7,6 +7,9 @@ const useStyles = makeStyles(() => ({
   fullHeight: {
     height: "100%",
   },
+  fullWidth: {
+    width: "100%",
+  },
 }));
 
 export const MessengerContainer = () => {
@@ -14,11 +17,11 @@ export const MessengerContainer = () => {
 
   return (
     <Box width="732px" height="100%" overflow="hidden">
-      <Grid container className={classes.fullHeight}>
+      <Grid container className={classes.fullHeight} wrap="nowrap">
         <Grid item className={classes.fullHeight}>
           <MessengerChatList />
         </Grid>
-        <Grid item>
+        <Grid item className={classes.fullWidth}>
           <MessengerChatContainer />
         </Grid>
       </Grid>

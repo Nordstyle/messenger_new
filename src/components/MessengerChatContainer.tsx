@@ -1,58 +1,58 @@
-import React from "react";
-import { Box, makeStyles, Theme } from "@material-ui/core";
+import React, { useEffect, useRef } from "react";
+import { Box, makeStyles, RootRef, Theme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
-    padding: theme.spacing(1.5, 2),
-    fontSize: "14px",
-    lineHeight: "20px",
-    fontWeight: "bolder",
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    width: "100%",
     height: "52px",
+    padding: theme.spacing(1.5, 2),
+    borderBottom: `1px solid ${theme.palette.divider}`,
+  },
+  heading: {
+    width: "90%",
+    fontSize: "14px",
+    lineHeight: "28px",
+    fontWeight: "bolder",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+  chatContainer: {
+    position: "relative",
+    flexGrow: 1,
+  },
+  chatView: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    overflow: "auto",
   },
 }));
 
 export const MessengerChatContainer = () => {
   const classes = useStyles();
+  const viewRef = useRef<Nullable<HTMLDivElement>>(null);
+
+  useEffect(() => {
+    if (viewRef && viewRef.current) {
+      const { scrollHeight, clientHeight } = viewRef.current;
+      const maxScrollTop = scrollHeight - clientHeight;
+
+      viewRef.current.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+    }
+  }, [viewRef]);
 
   return (
-    <Box>
-      <Box className={classes.header}>СК002004560</Box>
-      <Box>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, neque
-        labore sapiente quos nesciunt soluta numquam minima ad sit fugiat dolor
-        in ducimus porro minus eius perspiciatis? Eum, magni odit. Praesentium
-        voluptatibus nam, cum dolorum quo labore corrupti dolorem atque sunt
-        accusamus non voluptatum animi dolor? Perspiciatis porro perferendis,
-        sit, sapiente reprehenderit deleniti corporis tempore dolores voluptatum
-        quia, ex ab? Consequuntur inventore aspernatur fugit doloribus ducimus
-        dolore exercitationem, dolorem numquam animi odit quaerat illo
-        consequatur at illum vero soluta impedit esse tenetur, porro molestias
-        cupiditate! Veniam consectetur blanditiis ducimus dolorem? Culpa nostrum
-        officiis perspiciatis nulla temporibus, debitis sapiente neque.
-        Temporibus amet deserunt nemo in maxime. Voluptates, necessitatibus
-        maxime deleniti impedit natus voluptatum, eos cumque, commodi doloribus
-        quod ab asperiores qui. Deserunt esse ullam consequatur debitis
-        quibusdam sed quam, molestiae reiciendis cum! Neque, obcaecati! A magnam
-        aliquid asperiores aut sunt qui officia, accusantium quia dolores,
-        blanditiis neque incidunt libero accusamus hic. Quia ea, unde fuga
-        recusandae, qui cum, voluptatum corrupti ipsum ex deleniti saepe impedit
-        minus inventore cumque. Similique ipsam ab quae inventore perferendis a,
-        odit magni tempore dolorum facere voluptatum? Debitis suscipit delectus
-        libero deleniti culpa, exercitationem sapiente labore. Rerum sequi
-        consectetur exercitationem sint necessitatibus, a magni? Magni
-        reprehenderit nemo soluta eum maxime temporibus voluptas aperiam quidem
-        ratione. Velit, natus! Atque ducimus blanditiis obcaecati amet quo in
-        dolorum doloribus nisi enim maxime id alias, reiciendis neque magni quis
-        molestias aspernatur voluptas sequi itaque excepturi voluptates minus
-        numquam repellat? Quidem, laboriosam. Dolor temporibus doloribus
-        mollitia in labore sapiente magnam reprehenderit distinctio nesciunt
-        similique voluptate sed rerum, numquam vero et molestias eos minus,
-        assumenda reiciendis. Voluptatibus consectetur exercitationem soluta
-        eos, dignissimos animi? Nesciunt culpa unde mollitia rerum, alias ipsum
-        facilis, quo dolorem itaque inventore iure saepe est nihil incidunt?
-        Soluta accusamus quos officiis explicabo velit recusandae. Dolorum
-        labore eum quidem expedita minus.
+    <Box width="443px">
+      <Box className={classes.header}>
+        <Box className={classes.heading}>СК002004560</Box>
+      </Box>
+      <Box className={classes.chatContainer}>
+        <RootRef rootRef={viewRef}>
+          <Box className={classes.chatView}>1</Box>
+        </RootRef>
       </Box>
     </Box>
   );
