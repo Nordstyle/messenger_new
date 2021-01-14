@@ -28,22 +28,72 @@ export const MessengerChatList = () => {
     <Box className={classes.root}>
       <Box className={classes.header}>Чаты</Box>
       <Box className={classes.chatList}>
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
-        <MessengerChatItem />
+        <MessengerChatItem
+          pinned
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
       </Box>
     </Box>
   );

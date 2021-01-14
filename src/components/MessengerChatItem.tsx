@@ -2,6 +2,8 @@ import React from "react";
 import { Box, makeStyles, Theme } from "@material-ui/core";
 import clsx from "clsx";
 
+import { ReactComponent as PinnedIcon } from "../assets/pinned.svg";
+
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     borderBottom: `1px solid ${theme.palette.divider}`,
@@ -38,21 +40,24 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const MessengerChatItem: React.FC = () => {
+interface MessengerChatItem {
+  title: string;
+  name: string;
+  message?: string;
+  pinned?: boolean;
+}
+
+export const MessengerChatItem: React.FC<MessengerChatItem> = (props) => {
+  const { title, name, message, pinned } = props;
   const classes = useStyles();
 
   return (
     <Box className={classes.root}>
       <Box className={classes.container}>
-        <Box className={clsx([classes.title, classes.ellepsis])}>
-          СК002004560
-        </Box>
-        <Box className={clsx([classes.name, classes.ellepsis])}>
-          Евгений Шумилин
-        </Box>
+        <Box className={clsx([classes.title, classes.ellepsis])}>{title}</Box>
+        <Box className={clsx([classes.name, classes.ellepsis])}>{name}</Box>
         <Box className={clsx([classes.message, classes.ellepsis])}>
-          Ждём результат по следующим этапам Ждём результат по следующим
-          этапам...
+          {pinned && <PinnedIcon />} {message}
         </Box>
       </Box>
     </Box>

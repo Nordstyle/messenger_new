@@ -7,7 +7,18 @@ export const MessengerOpener: React.FC<MessengerOpener> = (props) => {
   const { children, ...restProps } = props;
 
   return (
-    <Drawer {...restProps} style={{ zIndex: 1400 }} anchor="right">
+    <Drawer
+      {...restProps}
+      ModalProps={{
+        BackdropProps: {
+          style: {
+            backgroundColor: "rgba(0,0,0,0.20)",
+          },
+        },
+      }}
+      style={{ zIndex: 1400 }}
+      anchor="right"
+    >
       {children}
     </Drawer>
   );
