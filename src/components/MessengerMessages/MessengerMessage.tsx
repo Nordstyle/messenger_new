@@ -3,12 +3,15 @@ import { Box, makeStyles, Theme } from "@material-ui/core";
 import { File } from "../../types";
 import { MessengerFileMessage } from "./MessengerFileMessage";
 
+import { ReactComponent as PinnedIcon } from "../assets/pinned.svg";
+
 interface MessengerMessageProps {
   isCurrentUserMessage: boolean;
   name: string;
   date: string;
   message: string;
   file?: File;
+  pinned?: boolean;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -22,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const MessengerMessage: React.FC<MessengerMessageProps> = (props) => {
-  const { isCurrentUserMessage, name, date, message, file } = props;
+  const { isCurrentUserMessage, name, date, message, file, pinned } = props;
   const classes = useStyles();
 
   const newDate =
@@ -55,6 +58,11 @@ export const MessengerMessage: React.FC<MessengerMessageProps> = (props) => {
         >
           {newDate.toLocaleString("ru", options)}
         </Box>
+        {pinned && (
+          <Box display="inline">
+            <PinnedIcon />
+          </Box>
+        )}
       </Box>
       <Box
         className={classes.message}
