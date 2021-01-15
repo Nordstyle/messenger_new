@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Box, makeStyles, RootRef, Theme } from "@material-ui/core";
+import { MessengerMessage } from "./MessengerMessages/MessengerMessage";
+import { MessengerMessageSeparator } from "./MessengerMessages/MessengerMessageSeparator";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
@@ -20,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   chatContainer: {
     position: "relative",
     flexGrow: 1,
+    height: "100%",
   },
   chatView: {
     position: "absolute",
@@ -28,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: 0,
     bottom: 0,
     overflow: "auto",
+    padding: theme.spacing(3, 2, 1, 2),
   },
 }));
 
@@ -45,13 +49,44 @@ export const MessengerChatContainer = () => {
   }, [viewRef]);
 
   return (
-    <Box width="443px">
+    <Box width="443px" height="100%">
       <Box className={classes.header}>
         <Box className={classes.heading}>СК002004560</Box>
       </Box>
       <Box className={classes.chatContainer}>
         <RootRef rootRef={viewRef}>
-          <Box className={classes.chatView}>1</Box>
+          <Box className={classes.chatView}>
+            <MessengerMessageSeparator date="2021-01-14T11:20:21.989667Z" />
+            <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Сергей Мороз"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessageSeparator date="2021-01-15T11:20:21.989667Z" />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Игорь Анохин"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T13:20:21.989667Z"
+              file={{
+                contentType: "image/png",
+                extension: ".png",
+                fileName: "org_logo (8).png",
+                lenght: 0,
+                url:
+                  "https://api-mto-stage.lahta-spb.ru/filestorage-service/api/v1/files/bucket-chat-101947/z4uwixbiwqo_637463003458589096",
+              }}
+            />
+          </Box>
         </RootRef>
       </Box>
     </Box>

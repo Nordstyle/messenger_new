@@ -15,8 +15,8 @@ export interface File {
   contentType: string;
   fileName: string;
   url: string;
-  length: number;
-  extension: string;
+  lenght: number;
+  extension: Nullable<string>;
 }
 
 export interface Poll {
