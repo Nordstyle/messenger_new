@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   chatContainer: {
     position: "relative",
     flexGrow: 1,
-    height: "100%",
+    height: "calc(100% - 52px)",
   },
   chatView: {
     position: "absolute",
@@ -85,6 +85,97 @@ export const MessengerChatContainer = () => {
                 url:
                   "https://api-mto-stage.lahta-spb.ru/filestorage-service/api/v1/files/bucket-chat-101947/z4uwixbiwqo_637463003458589096",
               }}
+            />
+            <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Сергей Мороз"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Сергей Мороз"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Сергей Мороз"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Сергей Мороз"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Сергей Мороз"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Сергей Мороз"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Сергей Мороз"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T11:20:21.989667Z"
             />
           </Box>
         </RootRef>
