@@ -3,7 +3,7 @@ import { Box, makeStyles, Theme } from "@material-ui/core";
 import { File } from "../../types";
 import { MessengerFileMessage } from "./MessengerFileMessage";
 
-import { ReactComponent as PinnedIcon } from "../assets/pinned.svg";
+import { ReactComponent as PinnedIcon } from "../../assets/pinned.svg";
 
 interface MessengerMessageProps {
   isCurrentUserMessage: boolean;
