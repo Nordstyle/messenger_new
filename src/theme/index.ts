@@ -27,5 +27,19 @@ export const createMyTheme = () => {
 
   return {
     ...baseTheme,
+    overrides: {
+      MuiInput: {
+        // Name of the styleSheet
+        underline: {
+          content: "none",
+          "&:before": {
+            content: "none",
+          },
+          "&:after": {
+            content: "none",
+          },
+        },
+      },
+    },
   };
 };
