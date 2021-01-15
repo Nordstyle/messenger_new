@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Box, makeStyles, RootRef, Theme } from "@material-ui/core";
 import { MessengerMessage } from "./MessengerMessages/MessengerMessage";
 import { MessengerMessageSeparator } from "./MessengerMessages/MessengerMessageSeparator";
+import { MessengerTextArea } from "./MessengerTextArea";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
@@ -21,11 +22,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   chatContainer: {
     position: "relative",
-    flexGrow: 1,
     height: "calc(100% - 52px)",
   },
   chatView: {
     position: "absolute",
+    height: "calc(100% - 39px)",
     left: 0,
     top: 0,
     right: 0,
@@ -179,6 +180,16 @@ export const MessengerChatContainer = () => {
             />
           </Box>
         </RootRef>
+        <Box
+          style={{
+            width: "100%",
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+          }}
+        >
+          <MessengerTextArea />
+        </Box>
       </Box>
     </Box>
   );
