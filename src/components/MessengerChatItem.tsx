@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontSize: "14px",
     lineHeight: "20px",
-    fontWeight: "bolder",
   },
   name: {
     fontSize: "12px",
     lineHeight: "16px",
     fontWeight: "normal",
+    padding: "2px 0",
   },
   message: {
     fontSize: "12px",
@@ -54,7 +54,12 @@ export const MessengerChatItem: React.FC<MessengerChatItem> = (props) => {
   return (
     <Box className={classes.root}>
       <Box className={classes.container}>
-        <Box className={clsx([classes.title, classes.ellepsis])}>{title}</Box>
+        <Box
+          className={clsx([classes.title, classes.ellepsis])}
+          fontWeight={500}
+        >
+          {title}
+        </Box>
         <Box className={clsx([classes.name, classes.ellepsis])}>{name}</Box>
         <Box className={clsx([classes.message, classes.ellepsis])}>
           {pinned && <PinnedIcon />} {message}

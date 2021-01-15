@@ -1,14 +1,20 @@
 import React, { useEffect } from "react";
 import { Grid, IconButton } from "@material-ui/core";
+import WebFont from "webfontloader";
 import { makeStyles, Theme, ThemeProvider } from "@material-ui/core/styles";
 import { MessengerOpener } from "./MessengerOpener";
 import { MessengerContainer } from "./MessengerContainer";
-
 import { createMyTheme } from "../theme";
 import { ServiceBase } from "../services/ServiceBase";
 import { ModuleName } from "../constants";
 
 import { ReactComponent as CrossIcon } from "../assets/big_cross.svg";
+
+WebFont.load({
+  google: {
+    families: ["Montserrat:300,400,500,600,700,800,900"],
+  },
+});
 
 export interface MessengerProps {
   idUser: number;
