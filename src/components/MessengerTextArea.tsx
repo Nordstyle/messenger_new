@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const MessengerTextArea = () => {
+export const MessengerTextArea: React.FC = () => {
   const classes = useStyles();
   const [value, setValue] = useState("");
 

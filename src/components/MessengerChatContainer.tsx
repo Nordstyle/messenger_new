@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const MessengerChatContainer = () => {
+export const MessengerChatContainer: React.FC = () => {
   const classes = useStyles();
   const viewRef = useRef<Nullable<HTMLDivElement>>(null);
 
@@ -95,12 +95,53 @@ export const MessengerChatContainer = () => {
             />
             <MessengerMessage
               isCurrentUserMessage={false}
+              name="Системный помощник"
+              pinned
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              votingClient={{
+                votingId: "test",
+                name: "hello world",
+                accountCount: 9,
+                isClosed: true,
+                votingObjects: [
+                  {
+                    variantId: "test",
+                    name: "Единственный поставщик",
+                    accounts: [],
+                    contractors: [],
+                  },
+                ],
+              }}
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
               name="Сергей Мороз"
               message="Добрый день!
               Когда ждать следующий этап?"
               date="2021-01-14T11:20:21.989667Z"
             />
             <MessengerMessage
+              isCurrentUserMessage
+              name="Сергей Мороз"
+              message="Добрый день"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            <MessengerMessage
+              isCurrentUserMessage={false}
+              name="Сергей Мороз"
+              message="Добрый день!
+              Когда ждать следующий этап?"
+              date="2021-01-14T11:20:21.989667Z"
+            />
+            {/* <MessengerMessage
               isCurrentUserMessage
               name="Сергей Мороз"
               message="Добрый день"
@@ -151,33 +192,7 @@ export const MessengerChatContainer = () => {
               message="Добрый день!
               Когда ждать следующий этап?"
               date="2021-01-14T11:20:21.989667Z"
-            />
-            <MessengerMessage
-              isCurrentUserMessage
-              name="Сергей Мороз"
-              message="Добрый день"
-              date="2021-01-14T11:20:21.989667Z"
-            />
-            <MessengerMessage
-              isCurrentUserMessage={false}
-              name="Сергей Мороз"
-              message="Добрый день!
-              Когда ждать следующий этап?"
-              date="2021-01-14T11:20:21.989667Z"
-            />
-            <MessengerMessage
-              isCurrentUserMessage
-              name="Сергей Мороз"
-              message="Добрый день"
-              date="2021-01-14T11:20:21.989667Z"
-            />
-            <MessengerMessage
-              isCurrentUserMessage={false}
-              name="Сергей Мороз"
-              message="Добрый день!
-              Когда ждать следующий этап?"
-              date="2021-01-14T11:20:21.989667Z"
-            />
+            /> */}
           </Box>
         </RootRef>
         <Box

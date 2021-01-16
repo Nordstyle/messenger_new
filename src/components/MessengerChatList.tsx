@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const MessengerChatList = () => {
+export const MessengerChatList: React.FC = () => {
   const classes = useStyles();
 
   return (

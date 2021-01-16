@@ -1,10 +1,11 @@
 import React from "react";
-import { Box, makeStyles, Theme } from "@material-ui/core";
+import { Box, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
+import { ITheme } from "../theme";
 
 import { ReactComponent as PinnedIcon } from "../assets/pinned.svg";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme: ITheme) => ({
   root: {
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     transition: "0.2s",
     padding: theme.spacing(1, 2),
     "&:hover": {
-      backgroundColor: "#EFF8FF",
+      backgroundColor: theme.palette.themeColors.primary,
     },
   },
   title: {

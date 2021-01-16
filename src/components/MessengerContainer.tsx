@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const MessengerContainer = () => {
+export const MessengerContainer: React.FC = () => {
   const classes = useStyles();
 
   return (

@@ -1,35 +1,43 @@
-import { createMuiTheme } from "@material-ui/core/styles";
-import createPalette from "@material-ui/core/styles/createPalette";
+import { createMuiTheme, Theme, ThemeOptions } from "@material-ui/core/styles";
+import createPalette, { Palette } from "@material-ui/core/styles/createPalette";
 
-// export type CustomTypography = Modify<
-//   Typography,
-//   {
-//     secondaryFontFamily: string;
-//   }
-// >;
+interface IPalette extends Palette {
+  themeColors: {
+    primary: React.CSSProperties["color"];
+    secondary: React.CSSProperties["color"];
+    success: React.CSSProperties["color"];
+    fail: React.CSSProperties["color"];
+  };
+}
+export interface ITheme extends Theme {
+  palette: IPalette;
+}
+export interface IThemeOptions extends ThemeOptions {
+  palette: IPalette;
+}
 
-// export type CustomTheme = Modify<
-//   Theme,
-//   // {
-//   //   typography: CustomTypography;
-//   // }
-// >;
-
-export const createMyTheme = () => {
+export const createMyTheme = (): ThemeOptions => {
   const baseTheme = createMuiTheme({
     palette: createPalette({
       divider: "#CFD8DC",
-      text: {
-        secondary: "#666666",
+      themeColors: {
+        primary: "#EFF8FF",
+        secondary: "#F7F7FA",
+        success: "#098C0F",
+        fail: "#F44336",
       },
-    }),
+      text: {
+        primary: "#000000",
+        secondary: "#666666",
+        hint: "#1267C7",
+      },
+    } as IPalette),
   });
 
   return {
     ...baseTheme,
     overrides: {
       MuiInput: {
-        // Name of the styleSheet
         underline: {
           content: "none",
           "&:before": {

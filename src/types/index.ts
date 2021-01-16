@@ -93,3 +93,55 @@ export interface ChatStatus {
   name: string;
   description: string;
 }
+
+export interface VotingClient {
+  votingId: string;
+  name: string;
+  votingObjects: VotingObject[];
+  accountCount: number;
+  isClosed: boolean; // запрещается голосовать в чате комиссии из-за отказа от проведения закупки
+}
+
+export interface VotingObject {
+  variantId: string;
+  name: string;
+  contractors: VotingContractor[];
+  accounts: VotedAccount[];
+}
+
+export interface VotingContractor {
+  contractorName: string;
+  contractorId: number;
+  priceOffer?: number; // ценовое предложение
+  deviationBestPrice?: number; // отклонение от лучших ц.п. - не используется, вместо него - percentDifferentByPurchase
+  term?: string; // срок поставки (DateTime) - уже не используется
+  termLimit?: number; // срок поставки
+  termDeviation?: number; // срок поставки - отклонение - уже не используется
+  defermentPayment?: number; // отсрочка платежа
+  defermentDeviation?: number; // отклонение отсрочки платежа
+  percentDifferentByBestContractorOffer: number;
+  percentDifferentByPurchase: number; // отклонение от лучших ц.п.
+}
+
+export interface UpdatedVotingMessage {
+  chatId: number;
+  messageId: number;
+  documentId: string;
+  votingId: string;
+  stateVotingObjects: StateVotingObject[];
+}
+
+export interface StateVotingObject {
+  variantId: string;
+  accounts: VotedAccount[];
+  like: boolean;
+}
+
+export interface VotedAccount {
+  accountId: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  isLike?: boolean; // голос "за" или "против"
+}

@@ -39,7 +39,7 @@ export const MessengerFileMessage: React.FC<File> = (props) => {
           <DocIcon />
         </Grid>
         <Grid item>
-          <Box fontSize="12px" color="#1267C7">
+          <Box fontSize="12px" color="text.hint">
             {fileName}
           </Box>
         </Grid>

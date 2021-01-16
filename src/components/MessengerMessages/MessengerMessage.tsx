@@ -1,9 +1,11 @@
-import React from "react";
-import { Box, makeStyles, Theme } from "@material-ui/core";
-import { File } from "../../types";
+import React, { useMemo } from "react";
+import { Box, makeStyles, Theme, useTheme } from "@material-ui/core";
+import { File, VotingClient } from "../../types";
 import { MessengerFileMessage } from "./MessengerFileMessage";
 
 import { ReactComponent as PinnedIcon } from "../../assets/pinned.svg";
+import { ITheme } from "../../theme";
+import { MessengerVotingMessage } from "./MessengerVotingMessage/MessengerVotingMessage";
 
 interface MessengerMessageProps {
   isCurrentUserMessage: boolean;
@@ -12,21 +14,31 @@ interface MessengerMessageProps {
   message: string;
   file?: File;
   pinned?: boolean;
+  votingClient?: VotingClient;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
   message: {
     display: "inline-flex",
+    width: "100%",
     fontSize: "12px",
     padding: theme.spacing(1, 2),
     borderRadius: theme.spacing(1),
-    maxWidth: "80%",
   },
 }));
 
 export const MessengerMessage: React.FC<MessengerMessageProps> = (props) => {
-  const { isCurrentUserMessage, name, date, message, file, pinned } = props;
+  const {
+    isCurrentUserMessage,
+    name,
+    date,
+    message,
+    file,
+    pinned,
+    votingClient,
+  } = props;
   const classes = useStyles();
+  const theme: ITheme = useTheme();
 
   const newDate =
     date.indexOf("Z") === -1
@@ -36,6 +48,14 @@ export const MessengerMessage: React.FC<MessengerMessageProps> = (props) => {
     hour: "numeric",
     minute: "numeric",
   };
+
+  const currentMessage = useMemo(() => {
+    if (file) return <MessengerFileMessage {...file} />;
+
+    if (votingClient) return <MessengerVotingMessage client={votingClient} />;
+
+    return <>{message}</>;
+  }, [message, file, votingClient]);
 
   return (
     <Box mb={2} textAlign={isCurrentUserMessage ? "right" : "left"}>
@@ -53,6 +73,7 @@ export const MessengerMessage: React.FC<MessengerMessageProps> = (props) => {
         <Box
           display="inline"
           color="text.secondary"
+          marginRight="4px"
           fontSize="12px"
           fontWeight={500}
         >
@@ -67,10 +88,13 @@ export const MessengerMessage: React.FC<MessengerMessageProps> = (props) => {
       <Box
         className={classes.message}
         style={{
-          backgroundColor: isCurrentUserMessage ? "#EFF8FF" : "#F7F7FA",
+          maxWidth: votingClient ? "100%" : "80%",
+          backgroundColor: isCurrentUserMessage
+            ? theme.palette.themeColors.primary
+            : theme.palette.themeColors.secondary,
         }}
       >
-        {file ? <MessengerFileMessage {...file} /> : message}
+        {currentMessage}
       </Box>
     </Box>
   );
