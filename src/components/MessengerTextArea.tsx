@@ -49,6 +49,7 @@ export const MessengerTextArea: React.FC = () => {
       }}
       focused={false}
       fullWidth
+      rowsMax={8}
       multiline
       value={value}
       onChange={(e) => setValue(e.currentTarget.value)}
