@@ -3,25 +3,10 @@ import {
   Popover,
   Box,
   TextField,
-  Button,
+  IconButton,
   makeStyles,
-  createStyles,
 } from "@material-ui/core";
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    text: {
-      width: "300px",
-    },
-    button: {
-      marginLeft: "8px",
-      width: "40px",
-      height: "100%",
-      minWidth: "unset",
-      backgroundColor: "#E4EBEC",
-    },
-  })
-);
+import { ReactComponent as SendIcon } from "../../../../assets/send.svg";
 
 interface MessengerVotingCommentPopoverProps {
   // eslint-disable-next-line no-unused-vars
@@ -30,12 +15,24 @@ interface MessengerVotingCommentPopoverProps {
   onClose: () => void;
 }
 
+const useStyles = makeStyles(() => ({
+  root: {
+    width: "300px",
+    marginRight: "16px",
+  },
+  inputRoot: {
+    padding: "10px 12px",
+  },
+  inputLabel: {
+    transform: "translate(14px, 11px) scale(1)",
+  },
+}));
+
 export const MessengerVotingCommentPopover: React.FC<MessengerVotingCommentPopoverProps> = (
   props
 ) => {
   const { onSubmit, anchorEl, onClose } = props;
   const classes = useStyles();
-
   const [comment, setComment] = useState<string>("");
 
   const open = Boolean(anchorEl);
@@ -61,23 +58,30 @@ export const MessengerVotingCommentPopover: React.FC<MessengerVotingCommentPopov
         horizontal: "left",
       }}
     >
-      <Box p={3} display="inline-flex" alignItems="center">
+      <Box px={2} py={2} display="inline-flex" alignItems="center">
         <TextField
           label="Введите комментарий"
-          id="outlined-size-small"
+          multiline
           defaultValue=""
           variant="outlined"
+          className={classes.root}
+          classes={{}}
+          InputLabelProps={{
+            classes: {
+              root: classes.inputLabel,
+            },
+          }}
+          InputProps={{
+            classes: {
+              root: classes.inputRoot,
+            },
+          }}
           color="primary"
-          className={classes.text}
           onChange={(event) => setComment(event.target.value)}
         />
-        <Button
-          color="primary"
-          onClick={handleSubmit}
-          className={classes.button}
-        >
-          check
-        </Button>
+        <IconButton size="small" onClick={handleSubmit}>
+          <SendIcon />
+        </IconButton>
       </Box>
     </Popover>
   );

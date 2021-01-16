@@ -20,6 +20,9 @@ export const createMyTheme = (): ThemeOptions => {
   const baseTheme = createMuiTheme({
     palette: createPalette({
       divider: "#CFD8DC",
+      primary: {
+        main: "#1267C7",
+      },
       themeColors: {
         primary: "#EFF8FF",
         secondary: "#F7F7FA",

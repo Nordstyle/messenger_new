@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles, Theme, TextField, Box } from "@material-ui/core";
+import { makeStyles, Theme, TextField, IconButton } from "@material-ui/core";
 
 import { ReactComponent as ClipIcon } from "../assets/clip.svg";
 import { ReactComponent as SendIcon } from "../assets/send.svg";
@@ -37,14 +37,14 @@ export const MessengerTextArea: React.FC = () => {
           multiline: classes.inputMultiline,
         },
         startAdornment: (
-          <Box className={classes.startAdornment}>
+          <IconButton size="small" className={classes.startAdornment}>
             <ClipIcon />
-          </Box>
+          </IconButton>
         ),
         endAdornment: value && (
-          <Box className={classes.endAdornment}>
+          <IconButton size="small" className={classes.endAdornment}>
             <SendIcon />
-          </Box>
+          </IconButton>
         ),
       }}
       focused={false}
