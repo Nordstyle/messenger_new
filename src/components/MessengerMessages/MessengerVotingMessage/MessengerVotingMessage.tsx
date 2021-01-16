@@ -2,7 +2,7 @@ import { Grid } from "@material-ui/core";
 import React from "react";
 import { VotingClient } from "../../../types";
 import { MessengerVotingCard } from "./MessengerVotingCard";
-import MessengerVotingResultLine from "./MessengerVotingResultLine/MessengerVotingResultLine";
+import { MessengerVotingResultLine } from "./MessengerVotingResultLine/MessengerVotingResultLine";
 
 interface MessengerVotingMessageProps {
   client: VotingClient;
