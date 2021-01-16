@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Box, Tooltip, withStyles, makeStyles } from "@material-ui/core";
+import { Grid, Box, Tooltip, withStyles } from "@material-ui/core";
 import { MessengerVotingTooltipAccountList } from "./MessengerVotingTooltipAccountList";
 import { VotedAccount } from "../../../types";
-
-import { ReactComponent as GroupIcon } from "../../../assets/user_group.svg";
 
 export const StyledTooltip = withStyles({
   tooltip: {
     padding: "6px 12px",
   },
 })(Tooltip);
-
-const useStyles = makeStyles(() => ({
-  img: {
-    width: "25px",
-    paddingTop: "5px",
-  },
-}));
 
 interface MessengerVotingGroupInfoProps {
   total: VotedAccount[]; // список аккаунтов голосующих
@@ -26,7 +17,6 @@ const MessengerVotingGroupInfo: React.FC<MessengerVotingGroupInfoProps> = (
   props
 ) => {
   const { total } = props;
-  const classes = useStyles();
 
   const [voted, setVoted] = useState<VotedAccount[]>([]);
   const [notVoted, setNotVoted] = useState<VotedAccount[]>([]);
@@ -63,15 +53,10 @@ const MessengerVotingGroupInfo: React.FC<MessengerVotingGroupInfoProps> = (
             </Grid>
           }
         >
-          <Box fontWeight="bold" lineHeight="36px">
-            {total.length}
+          <Box fontWeight={500} fontSize="10px" color="text.secondary">
+            Проголосовало {voted.length} из {total.length}
           </Box>
         </StyledTooltip>
-      </Grid>
-      <Grid item>
-        <Box pl={1}>
-          <GroupIcon className={classes.img} />
-        </Box>
       </Grid>
     </Grid>
   );

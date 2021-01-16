@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Box, Grid, useTheme } from "@material-ui/core";
 import { VotedAccount } from "../../../../types";
 import MessengerVotingGroupInfo from "../MessengerVotingGroupInfo";
 import { MessengerVotingResultTotal } from "./MessengerVotingResultTotal";
@@ -27,22 +27,30 @@ export const MessengerVotingResultLine: React.FC<MessengerVotingResultLineProps>
     onLike,
     onDislike,
   } = props;
+  const theme = useTheme();
 
   return (
-    <Grid container justify="space-between" direction="row">
-      <Grid item>
-        <MessengerVotingResultTotal
-          voted={voted}
-          votedAgainst={votedAgainst}
-          onLike={onLike}
-          onDislike={onDislike}
-          isUserVoted={isUserVoted}
-          isClosed={isClosed}
-        />
+    <Box pt={2} style={{ borderTop: `1px solid ${theme.palette.divider}` }}>
+      <Grid
+        container
+        justify="space-between"
+        direction="row"
+        alignItems="baseline"
+      >
+        <Grid item>
+          <MessengerVotingResultTotal
+            voted={voted}
+            votedAgainst={votedAgainst}
+            onLike={onLike}
+            onDislike={onDislike}
+            isUserVoted={isUserVoted}
+            isClosed={isClosed}
+          />
+        </Grid>
+        <Grid item>
+          <MessengerVotingGroupInfo total={total} />
+        </Grid>
       </Grid>
-      <Grid item>
-        <MessengerVotingGroupInfo total={total} />
-      </Grid>
-    </Grid>
+    </Box>
   );
 };

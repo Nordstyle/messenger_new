@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import { Grid } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
@@ -9,9 +9,6 @@ const useStyles = makeStyles(() => ({
     "& .MuiGrid-item": {
       fontSize: "12px",
     },
-  },
-  title: {
-    marginBottom: "2px",
   },
 }));
 
@@ -26,17 +23,23 @@ export const MessengerVotingTextLine: React.FC<
   const { children, title } = props;
 
   return (
-    <Grid
-      container
-      spacing={0}
-      className={classes.root}
-      justify="space-between"
-    >
-      <Grid item className={classes.title}>
-        {title}
-      </Grid>
+    <Box mb={1} width="100%">
+      <Grid
+        container
+        spacing={0}
+        className={classes.root}
+        justify="space-between"
+      >
+        <Grid item>
+          <Box fontSize="12px">{title}</Box>
+        </Grid>
 
-      {children && <Grid item>{children}</Grid>}
-    </Grid>
+        {children && (
+          <Grid item>
+            <Box fontSize="12px">{children}</Box>
+          </Grid>
+        )}
+      </Grid>
+    </Box>
   );
 };

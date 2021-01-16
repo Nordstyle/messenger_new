@@ -12,8 +12,8 @@ import { VotedAccount } from "../../../../types";
 import { MessengerVotingCommentPopover } from "./MessengerVotingCommentPopover";
 import { MessengerVotingTooltipAccountList } from "../MessengerVotingTooltipAccountList";
 
-import { ReactComponent as LikeIcon } from "../../../../assets/thumb_up.svg";
-import { ReactComponent as DislikeIcon } from "../../../../assets/thumb_down.svg";
+import { ReactComponent as LikeIcon } from "../../../../assets/like_icon.svg";
+import { ReactComponent as DislikeIcon } from "../../../../assets/dislike_icon.svg";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,14 +21,17 @@ const useStyles = makeStyles((theme: Theme) =>
       cursor: "pointer",
     },
     iconButton: {
-      padding: theme.spacing(1),
+      marginRight: theme.spacing(0.5),
+      padding: 0,
       "& img": {
         width: "20px",
       },
       cursor: "pointer",
     },
-    dislike: {
-      paddingLeft: theme.spacing(3),
+    activeButton: {
+      "& svg, path": {
+        fill: theme.palette.text.hint,
+      },
     },
   })
 );
@@ -88,6 +91,7 @@ export const MessengerVotingResultTotal: React.FC<MessengerVotingResultTotalProp
     <Grid container direction="row" className={classes.root}>
       <Grid item>
         <IconButton
+          className={voted.length > 0 ? classes.activeButton : undefined}
           onClick={onClickLike}
           classes={{ root: classes.iconButton }}
         >
@@ -96,23 +100,26 @@ export const MessengerVotingResultTotal: React.FC<MessengerVotingResultTotalProp
       </Grid>
 
       <Grid item>
-        {voted.length > 0 ? (
-          <StyledTooltip
-            title={<MessengerVotingTooltipAccountList voted={voted} />}
-          >
-            <Box fontWeight="bold" lineHeight="36px">
+        <Box mr={3}>
+          {voted.length > 0 ? (
+            <StyledTooltip
+              title={<MessengerVotingTooltipAccountList voted={voted} />}
+            >
+              <Box fontWeight="bold" fontSize="14px" color="text.hint">
+                {voted.length}
+              </Box>
+            </StyledTooltip>
+          ) : (
+            <Box fontWeight="bold" fontSize="14px" color="text.secondary">
               {voted.length}
             </Box>
-          </StyledTooltip>
-        ) : (
-          <Box fontWeight="bold" lineHeight="36px">
-            {voted.length}
-          </Box>
-        )}
+          )}
+        </Box>
       </Grid>
 
-      <Grid item className={classes.dislike}>
+      <Grid item>
         <IconButton
+          className={votedAgainst.length > 0 ? classes.activeButton : undefined}
           onClick={handleOpenPopover}
           classes={{ root: classes.iconButton }}
         >
@@ -125,15 +132,13 @@ export const MessengerVotingResultTotal: React.FC<MessengerVotingResultTotalProp
           <StyledTooltip
             title={<MessengerVotingTooltipAccountList voted={votedAgainst} />}
           >
-            <Box fontWeight="bold" lineHeight="36px">
+            <Box fontWeight="bold" fontSize="14px" color="text.hint">
               {votedAgainst.length}
             </Box>
           </StyledTooltip>
         ) : (
-          <Box fontWeight="bold" lineHeight="36px">
-            <Box fontWeight="bold" lineHeight="36px">
-              {votedAgainst.length}
-            </Box>
+          <Box fontWeight="bold" fontSize="14px" color="text.secondary">
+            {votedAgainst.length}
           </Box>
         )}
       </Grid>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import { VotingClient } from "../../../types";
 import { MessengerVotingCard } from "./MessengerVotingCard";
 import { MessengerVotingResultLine } from "./MessengerVotingResultLine/MessengerVotingResultLine";
@@ -18,46 +18,48 @@ export const MessengerVotingMessage: React.FC<MessengerVotingMessageProps> = (
   const idUser = 1;
 
   return (
-    <Grid container spacing={1}>
-      {votingObjects.map((object) => (
-        <Grid key={object.variantId} item>
-          <Grid container direction="column">
-            <Grid item>
-              <MessengerVotingCard data={object} />
-            </Grid>
-            <Grid item>
-              <MessengerVotingResultLine
-                voted={object.accounts.filter((account) =>
-                  Boolean(account.isLike)
-                )}
-                votedAgainst={object.accounts.filter(
-                  (account) => account.isLike !== null && !account.isLike
-                )}
-                total={object.accounts}
-                onLike={() => {
-                  if (!isClosed) {
-                    // onVoteLike(votingId, item.variantId, idUser);
+    <Box p={1} width="100%">
+      <Grid container spacing={1}>
+        {votingObjects.map((object) => (
+          <Grid key={object.variantId} item style={{ width: "100%" }}>
+            <Grid container direction="column">
+              <Grid item>
+                <MessengerVotingCard data={object} />
+              </Grid>
+              <Grid item>
+                <MessengerVotingResultLine
+                  voted={object.accounts.filter((account) =>
+                    Boolean(account.isLike)
+                  )}
+                  votedAgainst={object.accounts.filter(
+                    (account) => account.isLike !== null && !account.isLike
+                  )}
+                  total={object.accounts}
+                  onLike={() => {
+                    if (!isClosed) {
+                      // onVoteLike(votingId, item.variantId, idUser);
+                    }
+                  }}
+                  onDislike={() => {
+                    if (!isClosed) {
+                      // onVoteDislike(votingId, item.variantId, comment, idUser);
+                    }
+                  }}
+                  isUserVoted={
+                    idUser
+                      ? object.accounts
+                          .filter((item) => item.isLike !== null)
+                          .map((item) => item.accountId)
+                          .includes(idUser)
+                      : false
                   }
-                }}
-                onDislike={() => {
-                  if (!isClosed) {
-                    // onVoteDislike(votingId, item.variantId, comment, idUser);
-                  }
-                }}
-                isUserVoted={
-                  idUser
-                    ? object.accounts
-                        .filter((item) => item.isLike !== null)
-                        .map((item) => item.accountId)
-                        .includes(idUser)
-                    : false
-                }
-                isClosed={isClosed}
-              />
+                  isClosed={isClosed}
+                />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      ))}
-    </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 };

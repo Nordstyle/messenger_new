@@ -3,6 +3,7 @@ import { Box, makeStyles, RootRef, Theme } from "@material-ui/core";
 import { MessengerMessage } from "./MessengerMessages/MessengerMessage";
 import { MessengerMessageSeparator } from "./MessengerMessages/MessengerMessageSeparator";
 import { MessengerTextArea } from "./MessengerTextArea";
+import { voitingClientMock } from "../constants/mocks";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
@@ -99,20 +100,7 @@ export const MessengerChatContainer: React.FC = () => {
               pinned
               message="Добрый день!
               Когда ждать следующий этап?"
-              votingClient={{
-                votingId: "test",
-                name: "hello world",
-                accountCount: 9,
-                isClosed: true,
-                votingObjects: [
-                  {
-                    variantId: "test",
-                    name: "Единственный поставщик",
-                    accounts: [],
-                    contractors: [],
-                  },
-                ],
-              }}
+              votingClient={voitingClientMock}
               date="2021-01-14T11:20:21.989667Z"
             />
             <MessengerMessage

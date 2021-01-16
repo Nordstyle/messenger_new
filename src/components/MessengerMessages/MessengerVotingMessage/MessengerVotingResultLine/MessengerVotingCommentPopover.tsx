@@ -8,8 +8,6 @@ import {
   createStyles,
 } from "@material-ui/core";
 
-import { ReactComponent as CheckIcon } from "../../../../assets/check_icon.svg";
-
 const useStyles = makeStyles(() =>
   createStyles({
     text: {
@@ -78,7 +76,7 @@ export const MessengerVotingCommentPopover: React.FC<MessengerVotingCommentPopov
           onClick={handleSubmit}
           className={classes.button}
         >
-          <CheckIcon />
+          check
         </Button>
       </Box>
     </Popover>
