@@ -1,20 +1,27 @@
 import React, { useEffect, useRef } from "react";
-import { Box, makeStyles, RootRef, Theme } from "@material-ui/core";
+import {
+  Grid,
+  Box,
+  makeStyles,
+  RootRef,
+  Theme,
+  IconButton,
+} from "@material-ui/core";
 import { MessengerMessage } from "./MessengerMessages/MessengerMessage";
 import { MessengerMessageSeparator } from "./MessengerMessages/MessengerMessageSeparator";
 import { MessengerTextArea } from "./MessengerTextArea";
 import { voitingClientMock } from "../constants/mocks";
 import { MessengerPinnedContainer } from "./MessengerPinnedContainer";
 
+import { ReactComponent as ExpandIcon } from "../assets/expand_icon.svg";
+
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
-    width: "100%",
     height: "52px",
     padding: theme.spacing(1.5, 2),
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
   heading: {
-    width: "90%",
     fontSize: "14px",
     lineHeight: "28px",
     fontWeight: "bolder",
@@ -53,7 +60,23 @@ export const MessengerChatContainer: React.FC = () => {
   return (
     <Box width="443px" height="100%">
       <Box className={classes.header}>
-        <Box className={classes.heading}>СК002004560</Box>
+        <Box>
+          <Grid
+            container
+            justify="space-between"
+            alignItems="center"
+            wrap="nowrap"
+          >
+            <Grid item style={{ width: "calc(100% - 26px)" }}>
+              <Box className={classes.heading}>СК002004560</Box>
+            </Grid>
+            <Grid item>
+              <IconButton size="small">
+                <ExpandIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
       <Box className={classes.chatContainer}>
         {pinned && (
