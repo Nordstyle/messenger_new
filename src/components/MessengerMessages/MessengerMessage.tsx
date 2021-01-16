@@ -20,7 +20,6 @@ interface MessengerMessageProps {
 const useStyles = makeStyles((theme: Theme) => ({
   message: {
     display: "inline-flex",
-    width: "100%",
     fontSize: "12px",
     padding: theme.spacing(1, 2),
     borderRadius: theme.spacing(1),
@@ -88,7 +87,7 @@ export const MessengerMessage: React.FC<MessengerMessageProps> = (props) => {
       <Box
         className={classes.message}
         style={{
-          width: votingClient ? "100%" : "90%",
+          width: votingClient && "100%",
           justifyContent: isCurrentUserMessage ? "flex-end" : "flex-start",
           maxWidth: "568px",
           backgroundColor: isCurrentUserMessage
