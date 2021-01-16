@@ -22,7 +22,7 @@ const PercentDifferentByPurchaseFormatter = (
     : theme.palette.themeColors.fail;
 
   return (
-    <Grid container alignItems="center" style={{ color }}>
+    <Grid container alignItems="center" style={{ color, height: "16px" }}>
       <Grid item>
         <Box mr={0.5} fontSize="12px">
           {`${formatNumberToCurrency(Math.abs(value))} %`}
@@ -32,6 +32,7 @@ const PercentDifferentByPurchaseFormatter = (
         <Grid item>
           <Icon
             style={{
+              width: "14px",
               display: "flex",
               transform: !aboveZero ? "rotate(180deg)" : "none",
               color,
