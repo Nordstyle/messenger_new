@@ -88,7 +88,9 @@ export const MessengerMessage: React.FC<MessengerMessageProps> = (props) => {
       <Box
         className={classes.message}
         style={{
-          maxWidth: votingClient ? "100%" : "80%",
+          width: votingClient ? "100%" : "90%",
+          justifyContent: isCurrentUserMessage ? "flex-end" : "flex-start",
+          maxWidth: "568px",
           backgroundColor: isCurrentUserMessage
             ? theme.palette.themeColors.primary
             : theme.palette.themeColors.secondary,

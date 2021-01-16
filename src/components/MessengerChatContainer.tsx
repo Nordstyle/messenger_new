@@ -61,7 +61,7 @@ export const MessengerChatContainer: React.FC = () => {
   }, [viewRef]);
 
   return (
-    <Box width="443px" height="100%">
+    <Box width={widthSettings.isFull ? "100%" : "443px"} height="100%">
       <Box className={classes.header}>
         <Box>
           <Grid

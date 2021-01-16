@@ -22,9 +22,7 @@ export const MessengerOpener: React.FC<MessengerOpener> = (props) => {
       {...restProps}
       PaperProps={{
         style: {
-          maxWidth: widthSettings.isFull
-            ? "100%"
-            : `${widthSettings.containerWidth}`,
+          width: widthSettings.isFull && "100%",
         },
       }}
       classes={{ paper: classes.paper }}

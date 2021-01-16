@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "100%",
   },
   paper: {
+    width: "100%",
     background: theme.palette.background.paper,
   },
 }));
