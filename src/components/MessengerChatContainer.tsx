@@ -4,6 +4,7 @@ import { MessengerMessage } from "./MessengerMessages/MessengerMessage";
 import { MessengerMessageSeparator } from "./MessengerMessages/MessengerMessageSeparator";
 import { MessengerTextArea } from "./MessengerTextArea";
 import { voitingClientMock } from "../constants/mocks";
+import { MessengerPinnedContainer } from "./MessengerPinnedContainer";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
@@ -27,9 +28,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   chatView: {
     position: "absolute",
-    height: "calc(100% - 39px)",
     left: 0,
-    top: 0,
     right: 0,
     bottom: 0,
     overflow: "auto",
@@ -40,6 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const MessengerChatContainer: React.FC = () => {
   const classes = useStyles();
   const viewRef = useRef<Nullable<HTMLDivElement>>(null);
+  const pinned = true;
 
   useEffect(() => {
     if (viewRef && viewRef.current) {
@@ -56,8 +56,29 @@ export const MessengerChatContainer: React.FC = () => {
         <Box className={classes.heading}>СК002004560</Box>
       </Box>
       <Box className={classes.chatContainer}>
+        {pinned && (
+          <Box
+            style={{
+              width: "100%",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              zIndex: 1,
+            }}
+          >
+            <MessengerPinnedContainer
+              message="Голосование идёт Голосование идёт Голосование идёт Голосование идёт Голосование идёт Голосо"
+            />
+          </Box>
+        )}
         <RootRef rootRef={viewRef}>
-          <Box className={classes.chatView}>
+          <Box
+            className={classes.chatView}
+            style={{
+              top: pinned ? 51 : 0,
+              height: `calc(100% - 39px ${pinned && "- 51px"})`,
+            }}
+          >
             <MessengerMessageSeparator date="2021-01-14T11:20:21.989667Z" />
             <MessengerMessage
               isCurrentUserMessage
