@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const MessengerChatContainer: React.FC = () => {
   const classes = useStyles();
   const viewRef = useRef<Nullable<HTMLDivElement>>(null);
-  const pinned = true;
+  const pinned = false;
 
   useEffect(() => {
     if (viewRef && viewRef.current) {
@@ -66,9 +66,7 @@ export const MessengerChatContainer: React.FC = () => {
               zIndex: 1,
             }}
           >
-            <MessengerPinnedContainer
-              message="Голосование идёт Голосование идёт Голосование идёт Голосование идёт Голосование идёт Голосо"
-            />
+            <MessengerPinnedContainer message="Голосование идёт" />
           </Box>
         )}
         <RootRef rootRef={viewRef}>
@@ -76,7 +74,7 @@ export const MessengerChatContainer: React.FC = () => {
             className={classes.chatView}
             style={{
               top: pinned ? 51 : 0,
-              height: `calc(100% - 39px ${pinned && "- 51px"})`,
+              height: `calc(100% - 39px${pinned ? " - 51px" : ""})`,
             }}
           >
             <MessengerMessageSeparator date="2021-01-14T11:20:21.989667Z" />
