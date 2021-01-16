@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const MessengerChatContainer: React.FC = () => {
   const classes = useStyles();
   const viewRef = useRef<Nullable<HTMLDivElement>>(null);
-  const pinned = false;
+  const pinned = true;
 
   useEffect(() => {
     if (viewRef && viewRef.current) {
