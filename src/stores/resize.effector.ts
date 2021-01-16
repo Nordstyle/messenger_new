@@ -1,19 +1,26 @@
-import { createStore, createEvent, sample } from "effector";
+import { createStore, createEvent } from "effector";
 
-export const onChangeSizeMode = createEvent<string>("onChange size mode");
+export const setMode = createEvent<boolean>("onChange size mode");
 export const setSize = createEvent<number>("set size current mode");
 export const resetSizes = createEvent("reset sizes");
 
-export const $sizeMode = createStore<string>("default").on(
-  onChangeSizeMode,
-  (_, mode) => mode
-);
-export const $sizes = createStore({ containerWidth: 768 }).on(
-  setSize,
-  (_, size) => ({ containerWidth: size })
-);
+export const $widthSettings = createStore({
+  isFull: false,
+  containerWidth: 768,
+})
+  .on(setSize, (state, size) => ({
+    ...state,
+    containerWidth: size,
+  }))
+  .on(setMode, (state, mode) => ({
+    ...state,
+    isFull: mode,
+  }));
 
-sample($sizeMode, $sizes, (mode, size) => {
-  if (mode === "default") setSize(768);
-  return size;
-});
+// sample($isFullMode, $sizes, (isFullMode, size) => {
+//   if (!isFullMode) setSize(768);
+//   return size;
+// });
+
+// $widthSettings.watch((widthSettings) => console.log({ widthSettings }));
+// $sizes.watch((sizes) => console.log({ sizes }));

@@ -7,6 +7,8 @@ import {
   Theme,
   IconButton,
 } from "@material-ui/core";
+import { useStore } from "effector-react";
+import { $widthSettings, setMode } from "../stores/resize.effector";
 import { MessengerMessage } from "./MessengerMessages/MessengerMessage";
 import { MessengerMessageSeparator } from "./MessengerMessages/MessengerMessageSeparator";
 import { MessengerTextArea } from "./MessengerTextArea";
@@ -46,6 +48,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const MessengerChatContainer: React.FC = () => {
   const classes = useStyles();
   const viewRef = useRef<Nullable<HTMLDivElement>>(null);
+  const widthSettings = useStore($widthSettings);
   const pinned = true;
 
   useEffect(() => {
@@ -71,7 +74,10 @@ export const MessengerChatContainer: React.FC = () => {
               <Box className={classes.heading}>СК002004560</Box>
             </Grid>
             <Grid item>
-              <IconButton size="small">
+              <IconButton
+                size="small"
+                onClick={() => setMode(!widthSettings.isFull)}
+              >
                 <ExpandIcon />
               </IconButton>
             </Grid>
