@@ -5,7 +5,7 @@ import { MessengerLoader } from "./MessengerLoader";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    width: "288px",
+    width: "100%",
     height: "100%",
     borderRight: `1px solid ${theme.palette.divider}`,
   },
@@ -52,7 +52,7 @@ export const MessengerChatList: React.FC = () => {
               name="Евгений Шумилин"
               message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
             />
-            <MessengerChatItem
+            {/* <MessengerChatItem
               title="СК002004560"
               name="Евгений Шумилин"
               message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
@@ -106,7 +106,7 @@ export const MessengerChatList: React.FC = () => {
               title="СК002004560"
               name="Евгений Шумилин"
               message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
-            />
+            /> */}
           </>
         )}
       </Box>

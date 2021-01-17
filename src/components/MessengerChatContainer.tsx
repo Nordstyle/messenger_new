@@ -159,7 +159,7 @@ export const MessengerChatContainer: React.FC = () => {
                   votingClient={voitingClientMock}
                   date="2021-01-14T11:20:21.989667Z"
                 />
-                <MessengerMessage
+                {/* <MessengerMessage
                   isCurrentUserMessage
                   name="Сергей Мороз"
                   message="Добрый день"
@@ -184,7 +184,7 @@ export const MessengerChatContainer: React.FC = () => {
                   message="Добрый день!
               Когда ждать следующий этап?"
                   date="2021-01-14T11:20:21.989667Z"
-                />
+                /> */}
               </Box>
             </RootRef>
             <Box
