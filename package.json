@@ -5,14 +5,14 @@
   "author": "Anatoliy Z",
   "license": "MIT",
   "repository": "https://gitlab.stecpoint.ru/GPM/frontend/messenger",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
-  "unpkg": "dist/index.umd.js",
+  "main": "build/index.js",
+  "module": "build/index.modern.js",
+  "unpkg": "build/index.umd.js",
   "files": [
-    "dist"
+    "build"
   ],
   "scripts": {
-    "build": "cross-env NODE_ENV=production && rimraf dist && rollup -c",
+    "build": "cross-env NODE_ENV=production && rimraf build && rollup -c",
     "storybook": "start-storybook -p 9000 --https --ssl-cert ./stecpoint.crt --ssl-key ./stecpoint.key",
     "build-storybook": "build-storybook"
   },
