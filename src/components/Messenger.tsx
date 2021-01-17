@@ -32,9 +32,16 @@ export interface MessengerProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    position: "relative",
     width: "100%",
     overflow: "hidden",
     height: "100%",
+    paddingLeft: "44px",
+  },
+  closeContainer: {
+    position: "absolute",
+    left: 0,
+    top: 0,
   },
   paper: {
     width: "100%",
@@ -56,7 +63,7 @@ const Messenger: React.FC<MessengerProps> = (props) => {
     <ThemeProvider theme={myTheme}>
       <MessengerOpener open={open} onClose={onClose}>
         <Grid container wrap="nowrap" className={classes.root}>
-          <Grid item>
+          <Grid item className={classes.closeContainer}>
             <IconButton onClick={onClose}>
               <CrossIcon />
             </IconButton>

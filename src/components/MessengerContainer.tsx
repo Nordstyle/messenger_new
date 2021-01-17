@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
     height: "100%",
   },
   chatWrapper: {
-    width: "calc(60% - 14px)",
+    width: "60%",
     height: "100%",
   },
   listWrapper: {
