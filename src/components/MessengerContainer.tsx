@@ -7,8 +7,13 @@ const useStyles = makeStyles(() => ({
   fullHeight: {
     height: "100%",
   },
-  fullWidth: {
-    width: "100%",
+  chatWrapper: {
+    width: "calc(60% - 14px)",
+    height: "100%",
+  },
+  listWrapper: {
+    width: "40%",
+    height: "100%",
   },
 }));
 
@@ -18,10 +23,10 @@ export const MessengerContainer: React.FC = () => {
   return (
     <Box className={classes.fullHeight}>
       <Grid container className={classes.fullHeight} wrap="nowrap">
-        <Grid item className={classes.fullHeight}>
+        <Grid item className={classes.listWrapper}>
           <MessengerChatList />
         </Grid>
-        <Grid item className={classes.fullWidth}>
+        <Grid item className={classes.chatWrapper}>
           <MessengerChatContainer />
         </Grid>
       </Grid>

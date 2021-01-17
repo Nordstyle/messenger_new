@@ -60,7 +60,7 @@ export const MessengerVotingCommentPopover: React.FC<MessengerVotingCommentPopov
     >
       <Box px={2} py={2} display="inline-flex" alignItems="center">
         <TextField
-          label="Введите комментарий"
+          label="Почему вы против?"
           multiline
           defaultValue=""
           variant="outlined"
