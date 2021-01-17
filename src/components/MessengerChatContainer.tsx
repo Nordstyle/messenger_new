@@ -162,7 +162,7 @@ export const MessengerChatContainer: React.FC = () => {
               message="Добрый день"
               date="2021-01-14T11:20:21.989667Z"
             />
-            <MessengerMessage
+            {/* <MessengerMessage
               isCurrentUserMessage={false}
               name="Сергей Мороз"
               message="Добрый день!
@@ -181,7 +181,7 @@ export const MessengerChatContainer: React.FC = () => {
               message="Добрый день!
               Когда ждать следующий этап?"
               date="2021-01-14T11:20:21.989667Z"
-            />
+            /> */}
             {isLoading && <MessengerLoader size={50} />}
           </Box>
         </RootRef>
