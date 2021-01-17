@@ -32,6 +32,7 @@ export interface MessengerProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    width: "100%",
     overflow: "hidden",
     height: "100%",
   },

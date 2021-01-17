@@ -64,7 +64,7 @@ export const MessengerChatContainer: React.FC = () => {
   }, [viewRef]);
 
   return (
-    <Box width={widthSettings.isFull ? "100%" : "443px"} height="100%">
+    <Box width="100%" height="100%">
       <Box className={classes.header}>
         <Box>
           <Grid
@@ -91,7 +91,6 @@ export const MessengerChatContainer: React.FC = () => {
         <MessengerLoader size={250} />
       ) : (
         <>
-          {" "}
           <Box className={classes.chatContainer}>
             {pinned && (
               <Box

@@ -1,7 +1,8 @@
 import React from "react";
-import { Drawer, DrawerProps, makeStyles } from "@material-ui/core";
+import { Box, Drawer, DrawerProps, makeStyles } from "@material-ui/core";
 import { useStore } from "effector-react";
 import { $widthSettings } from "../stores/resize.effector";
+import { useResize } from "../hooks/useResize";
 
 interface MessengerOpener extends DrawerProps {}
 
@@ -10,26 +11,43 @@ const useStyles = makeStyles(() => ({
     background: "transparent",
     boxShadow: "none",
   },
+  resizer: {
+    position: "absolute",
+    left: "44px",
+    top: 0,
+    bottom: 0,
+    width: "4px",
+    height: "100%",
+    cursor: "col-resize",
+    zIndex: 100,
+  },
 }));
 
 export const MessengerOpener: React.FC<MessengerOpener> = (props) => {
   const { children, ...restProps } = props;
   const classes = useStyles();
   const widthSettings = useStore($widthSettings);
+  const [containerWidth, handleMove] = useResize(widthSettings.containerWidth);
 
   return (
     <Drawer
       {...restProps}
       PaperProps={{
         style: {
-          width: widthSettings.isFull && "100%",
+          maxWidth: "100%",
+          width: widthSettings.isFull ? "100%" : `${containerWidth}px`,
         },
       }}
       classes={{ paper: classes.paper }}
       style={{ zIndex: 1400 }}
       anchor="right"
     >
-      {children}
+      <>
+        {!widthSettings.isFull && (
+          <Box className={classes.resizer} onMouseDown={handleMove} />
+        )}
+        {children}
+      </>
     </Drawer>
   );
 };
