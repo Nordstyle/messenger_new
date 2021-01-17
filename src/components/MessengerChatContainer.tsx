@@ -74,7 +74,9 @@ export const MessengerChatContainer: React.FC = () => {
             wrap="nowrap"
           >
             <Grid item style={{ width: "calc(100% - 26px)" }}>
-              <Box className={classes.heading}>СК002004560</Box>
+              <Box title="СК002004560" className={classes.heading}>
+                СК002004560
+              </Box>
             </Grid>
             <Grid item>
               <IconButton

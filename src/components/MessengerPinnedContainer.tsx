@@ -36,6 +36,7 @@ export const MessengerPinnedContainer: React.FC<MessengerPinnedContainerProps> =
             Закреплённое сообщение
           </Box>
           <Box
+            title={message}
             className={classes.ellepsis}
             fontSize="12px"
             color="text.secondary"

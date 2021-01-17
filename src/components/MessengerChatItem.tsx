@@ -56,13 +56,19 @@ export const MessengerChatItem: React.FC<MessengerChatItem> = (props) => {
     <Box className={classes.root}>
       <Box className={classes.container}>
         <Box
+          title={title}
           className={clsx([classes.title, classes.ellepsis])}
           fontWeight={500}
         >
           {title}
         </Box>
-        <Box className={clsx([classes.name, classes.ellepsis])}>{name}</Box>
-        <Box className={clsx([classes.message, classes.ellepsis])}>
+        <Box title={name} className={clsx([classes.name, classes.ellepsis])}>
+          {name}
+        </Box>
+        <Box
+          title={message}
+          className={clsx([classes.message, classes.ellepsis])}
+        >
           {pinned && <PinnedIcon />} {message}
         </Box>
       </Box>
