@@ -69,6 +69,7 @@
     "clsx": "^1.1.1",
     "effector": "^21.7.5",
     "effector-react": "latest",
+    "querystring": "^0.2.0",
     "react-uuid": "^1.0.2",
     "rimraf": "^3.0.2",
     "webfontloader": "^1.6.28"
