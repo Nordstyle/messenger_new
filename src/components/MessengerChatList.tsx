@@ -5,6 +5,7 @@ import { MessengerLoader } from "./MessengerLoader";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    position: "relative",
     width: "100%",
     height: "100%",
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -26,33 +27,30 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const MessengerChatList: React.FC = () => {
   const classes = useStyles();
   /* TODO: заглушка isLoading */
-  const isLoading = false;
+  const isLoading = true;
 
   return (
     <Box className={classes.root}>
       <Box className={classes.header}>Чаты</Box>
       <Box className={classes.chatList}>
-        {isLoading ? (
-          <MessengerLoader size={150} />
-        ) : (
-          <>
-            <MessengerChatItem
-              pinned
-              title="СК002004560"
-              name="Евгений Шумилин"
-              message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
-            />
-            <MessengerChatItem
-              title="СК002004560"
-              name="Евгений Шумилин"
-              message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
-            />
-            <MessengerChatItem
-              title="СК002004560"
-              name="Евгений Шумилин"
-              message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
-            />
-            {/* <MessengerChatItem
+        {isLoading && <MessengerLoader size={50} list />}
+        <MessengerChatItem
+          pinned
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
+        {/* <MessengerChatItem
               title="СК002004560"
               name="Евгений Шумилин"
               message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
@@ -107,8 +105,6 @@ export const MessengerChatList: React.FC = () => {
               name="Евгений Шумилин"
               message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
             /> */}
-          </>
-        )}
       </Box>
     </Box>
   );

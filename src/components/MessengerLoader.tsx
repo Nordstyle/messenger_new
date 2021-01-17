@@ -1,22 +1,27 @@
-import Box from "@material-ui/core/Box";
 import React from "react";
+import Box from "@material-ui/core/Box";
 
 import { ReactComponent as Loader } from "../assets/loader.svg";
 
 interface MessengerLoaderProps {
   size: number;
+  list?: boolean;
 }
 
 export const MessengerLoader: React.FC<MessengerLoaderProps> = (props) => {
-  const { size } = props;
+  const { size, list } = props;
+
   return (
     <Box
       style={{
+        position: list ? "absolute" : "static",
+        left: list ? 0 : "50%",
+        bottom: 0,
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: "flex-end",
+        justifyContent: list ? "flex-start" : "center",
+        zIndex: 1000000,
       }}
-      height="100%"
     >
       <Loader style={{ width: size }} />
     </Box>
