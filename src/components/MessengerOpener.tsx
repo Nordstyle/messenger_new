@@ -18,6 +18,7 @@ const useStyles = makeStyles(() => ({
     bottom: 0,
     width: "4px",
     height: "100%",
+    userSelect: "none",
     cursor: "col-resize",
     zIndex: 100,
   },
