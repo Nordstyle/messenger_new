@@ -17,6 +17,7 @@ import { MessengerPinnedContainer } from "./MessengerPinnedContainer";
 import { MessengerLoader } from "./MessengerLoader";
 
 import { ReactComponent as ExpandIcon } from "../assets/expand_icon.svg";
+import { ReactComponent as ExpandRevertIcon } from "../assets/expand_revert.svg";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
@@ -53,7 +54,6 @@ export const MessengerChatContainer: React.FC = () => {
   /* TODO: заглушки pinned & isLoading */
   const isLoading = true;
   const pinned = true;
-  // const [pinned, setPinned] = useState(true);
 
   useEffect(() => {
     if (viewRef && viewRef.current) {
@@ -84,7 +84,7 @@ export const MessengerChatContainer: React.FC = () => {
                 size="small"
                 onClick={() => setMode(!widthSettings.isFull)}
               >
-                <ExpandIcon />
+                {widthSettings.isFull ? <ExpandRevertIcon /> : <ExpandIcon />}
               </IconButton>
             </Grid>
           </Grid>
