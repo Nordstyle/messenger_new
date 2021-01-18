@@ -14,9 +14,9 @@ import { MessengerMessageSeparator } from "./MessengerMessages/MessengerMessageS
 import { MessengerTextArea } from "./MessengerTextArea";
 import { voitingClientMock } from "../constants/mocks";
 import { MessengerPinnedContainer } from "./MessengerPinnedContainer";
+import { MessengerLoader } from "./MessengerLoader";
 
 import { ReactComponent as ExpandIcon } from "../assets/expand_icon.svg";
-import { MessengerLoader } from "./MessengerLoader";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
