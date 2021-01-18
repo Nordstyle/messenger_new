@@ -51,8 +51,9 @@ export const MessengerChatContainer: React.FC = () => {
   const viewRef = useRef<Nullable<HTMLDivElement>>(null);
   const widthSettings = useStore($widthSettings);
   /* TODO: заглушки pinned & isLoading */
-  const pinned = true;
   const isLoading = true;
+  const pinned = true;
+  // const [pinned, setPinned] = useState(true);
 
   useEffect(() => {
     if (viewRef && viewRef.current) {
@@ -184,7 +185,7 @@ export const MessengerChatContainer: React.FC = () => {
               Когда ждать следующий этап?"
               date="2021-01-14T11:20:21.989667Z"
             />
-            {isLoading && <MessengerLoader size={50} />}
+            {isLoading && <MessengerLoader size={40} />}
           </Box>
         </RootRef>
         <Box

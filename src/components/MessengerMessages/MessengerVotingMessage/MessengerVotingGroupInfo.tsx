@@ -34,15 +34,17 @@ const MessengerVotingGroupInfo: React.FC<MessengerVotingGroupInfoProps> = (
             <Grid container direction="column">
               {notVoted.length > 0 && (
                 <Grid item>
-                  <MessengerVotingTooltipAccountList
-                    title="Не голосовали"
-                    voted={notVoted}
-                  />
+                  <Box mb={2}>
+                    <MessengerVotingTooltipAccountList
+                      title="Не голосовали"
+                      voted={notVoted}
+                    />
+                  </Box>
                 </Grid>
               )}
               {voted.length > 0 && (
                 <Grid item>
-                  <Box mt={2}>
+                  <Box>
                     <MessengerVotingTooltipAccountList
                       title="Голосовали"
                       voted={voted}

@@ -24,22 +24,29 @@ const PercentDifferentByPurchaseFormatter = (
   return (
     <Grid container alignItems="center" style={{ color, height: "16px" }}>
       <Grid item>
-        <Box mr={0.5} fontSize="12px">
-          {`${formatNumberToCurrency(Math.abs(value))} %`}
-        </Box>
+        <Box fontSize="12px">{`${formatNumberToCurrency(
+          Math.abs(value)
+        )} %`}</Box>
       </Grid>
       {value > 0 && (
         <Grid item>
           <Icon
             style={{
-              width: "14px",
               display: "flex",
+              justifyContent: "flex-end",
               transform: !aboveZero ? "rotate(180deg)" : "none",
               color,
               alignItems: !aboveZero ? "center" : "unset",
             }}
           >
-            {value > 0 && <ArrowUpwardIcon fontSize="small" />}
+            {value > 0 && (
+              <ArrowUpwardIcon
+                style={{
+                  fontSize: "14px",
+                  transform: aboveZero ? "translateY(3px)" : "",
+                }}
+              />
+            )}
           </Icon>
         </Grid>
       )}

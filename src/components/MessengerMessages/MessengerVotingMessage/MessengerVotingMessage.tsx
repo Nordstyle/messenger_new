@@ -18,7 +18,7 @@ export const MessengerVotingMessage: React.FC<MessengerVotingMessageProps> = (
   const idUser = 1;
 
   return (
-    <Box p={1} width="100%">
+    <Box py={1} width="100%">
       <Grid container spacing={1}>
         {votingObjects.map((object) => (
           <Grid key={object.variantId} item style={{ width: "100%" }}>

@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Grid, IconButton, makeStyles, Theme } from "@material-ui/core";
+import { Box, Grid, makeStyles, Theme } from "@material-ui/core";
 
-import CrossIcon from "@material-ui/icons/Close";
+// import CrossIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -44,11 +44,11 @@ export const MessengerPinnedContainer: React.FC<MessengerPinnedContainerProps> =
             {message}
           </Box>
         </Grid>
-        <Grid item>
-          <IconButton size="small">
+        {/* <Grid item>
+          <IconButton onClick={() => setPinned(false)} size="small">
             <CrossIcon />
           </IconButton>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   );

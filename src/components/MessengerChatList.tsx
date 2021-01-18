@@ -33,7 +33,7 @@ export const MessengerChatList: React.FC = () => {
     <Box className={classes.root}>
       <Box className={classes.header}>Чаты</Box>
       <Box className={classes.chatList}>
-        {isLoading && <MessengerLoader size={50} list />}
+        {isLoading && <MessengerLoader size={40} list />}
         <MessengerChatItem
           pinned
           title="СК002004560"
@@ -50,11 +50,6 @@ export const MessengerChatList: React.FC = () => {
           name="Евгений Шумилин"
           message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
         />
-        {/* <MessengerChatItem
-          title="СК002004560"
-          name="Евгений Шумилин"
-          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
-        />
         <MessengerChatItem
           title="СК002004560"
           name="Евгений Шумилин"
@@ -104,7 +99,12 @@ export const MessengerChatList: React.FC = () => {
           title="СК002004560"
           name="Евгений Шумилин"
           message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
-        /> */}
+        />
+        <MessengerChatItem
+          title="СК002004560"
+          name="Евгений Шумилин"
+          message="Ждём результат по следующим этапам Ждём результат по следующим этапам завтра"
+        />
       </Box>
     </Box>
   );

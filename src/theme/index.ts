@@ -7,6 +7,7 @@ interface IPalette extends Palette {
     secondary: React.CSSProperties["color"];
     success: React.CSSProperties["color"];
     fail: React.CSSProperties["color"];
+    hoverFilled: React.CSSProperties["color"];
   };
 }
 export interface ITheme extends Theme {
@@ -28,6 +29,7 @@ export const createMyTheme = (): ThemeOptions => {
         secondary: "#F7F7FA",
         success: "#098C0F",
         fail: "#F44336",
+        hoverFilled: "#1E88E5",
       },
       text: {
         primary: "#000000",

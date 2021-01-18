@@ -15,11 +15,12 @@ export const MessengerLoader: React.FC<MessengerLoaderProps> = (props) => {
     <Box
       style={{
         position: list ? "absolute" : "static",
-        left: list ? 0 : "50%",
-        bottom: 0,
+        left: "50%",
+        transform: list ? "translateX(-50%)" : "",
+        bottom: list ? 8 : 0,
         display: "flex",
         alignItems: "flex-end",
-        justifyContent: list ? "flex-start" : "center",
+        justifyContent: "center",
         zIndex: 1000000,
       }}
     >

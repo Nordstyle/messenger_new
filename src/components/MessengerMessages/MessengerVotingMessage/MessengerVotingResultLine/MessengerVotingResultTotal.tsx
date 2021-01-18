@@ -4,18 +4,18 @@ import {
   IconButton,
   makeStyles,
   createStyles,
-  Theme,
   Box,
 } from "@material-ui/core";
 import { StyledTooltip } from "../MessengerVotingGroupInfo";
 import { VotedAccount } from "../../../../types";
 import { MessengerVotingCommentPopover } from "./MessengerVotingCommentPopover";
 import { MessengerVotingTooltipAccountList } from "../MessengerVotingTooltipAccountList";
+import { ITheme } from "../../../../theme";
 
 import { ReactComponent as LikeIcon } from "../../../../assets/like_icon.svg";
 import { ReactComponent as DislikeIcon } from "../../../../assets/dislike_icon.svg";
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme: ITheme) =>
   createStyles({
     root: {
       cursor: "pointer",
@@ -31,6 +31,14 @@ const useStyles = makeStyles((theme: Theme) =>
     activeButton: {
       "& svg, path": {
         fill: theme.palette.text.hint,
+      },
+    },
+    hoverWrapper: {
+      "&:hover": {
+        "& svg, path, div": {
+          color: theme.palette.themeColors.hoverFilled,
+          fill: theme.palette.themeColors.hoverFilled,
+        },
       },
     },
   })
@@ -88,59 +96,67 @@ export const MessengerVotingResultTotal: React.FC<MessengerVotingResultTotalProp
   };
 
   return (
-    <Grid container direction="row" className={classes.root}>
-      <Grid item>
-        <IconButton
-          className={voted.length > 0 ? classes.activeButton : undefined}
-          onClick={onClickLike}
-          classes={{ root: classes.iconButton }}
-        >
-          <LikeIcon />
-        </IconButton>
-      </Grid>
-
-      <Grid item>
-        <Box mr={3}>
-          {voted.length > 0 ? (
-            <StyledTooltip
-              title={<MessengerVotingTooltipAccountList voted={voted} />}
+    <Grid container direction="row" spacing={4} className={classes.root}>
+      <Grid item className={classes.hoverWrapper}>
+        <Grid container alignItems="center">
+          <Grid item>
+            <IconButton
+              className={voted.length > 0 ? classes.activeButton : undefined}
+              onClick={onClickLike}
+              classes={{ root: classes.iconButton }}
             >
-              <Box fontWeight="bold" fontSize="14px" color="text.hint">
+              <LikeIcon />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            {voted.length > 0 ? (
+              <StyledTooltip
+                title={<MessengerVotingTooltipAccountList voted={voted} />}
+              >
+                <Box fontWeight="bold" fontSize="14px" color="text.hint">
+                  {voted.length}
+                </Box>
+              </StyledTooltip>
+            ) : (
+              <Box fontWeight="bold" fontSize="14px" color="text.secondary">
                 {voted.length}
               </Box>
-            </StyledTooltip>
-          ) : (
-            <Box fontWeight="bold" fontSize="14px" color="text.secondary">
-              {voted.length}
-            </Box>
-          )}
-        </Box>
+            )}
+          </Grid>
+        </Grid>
       </Grid>
 
-      <Grid item>
-        <IconButton
-          className={votedAgainst.length > 0 ? classes.activeButton : undefined}
-          onClick={handleOpenPopover}
-          classes={{ root: classes.iconButton }}
-        >
-          <DislikeIcon />
-        </IconButton>
-      </Grid>
-
-      <Grid item>
-        {votedAgainst.length > 0 ? (
-          <StyledTooltip
-            title={<MessengerVotingTooltipAccountList voted={votedAgainst} />}
-          >
-            <Box fontWeight="bold" fontSize="14px" color="text.hint">
-              {votedAgainst.length}
-            </Box>
-          </StyledTooltip>
-        ) : (
-          <Box fontWeight="bold" fontSize="14px" color="text.secondary">
-            {votedAgainst.length}
-          </Box>
-        )}
+      <Grid item className={classes.hoverWrapper}>
+        <Grid container alignItems="center">
+          <Grid item>
+            <IconButton
+              className={
+                votedAgainst.length > 0 ? classes.activeButton : undefined
+              }
+              onClick={handleOpenPopover}
+              classes={{ root: classes.iconButton }}
+            >
+              <DislikeIcon />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            {votedAgainst.length > 0 ? (
+              <StyledTooltip
+                title={
+                  <MessengerVotingTooltipAccountList voted={votedAgainst} />
+                }
+              >
+                <Box fontWeight="bold" fontSize="14px" color="text.hint">
+                  {votedAgainst.length}
+                </Box>
+              </StyledTooltip>
+            ) : (
+              <Box fontWeight="bold" fontSize="14px" color="text.secondary">
+                {votedAgainst.length}
+              </Box>
+            )}
+          </Grid>
+        </Grid>
       </Grid>
 
       <MessengerVotingCommentPopover
