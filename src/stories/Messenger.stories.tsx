@@ -10,7 +10,7 @@ storiesOf("Messenger", module).add("Chat", () => {
     <>
       <Messenger
         settings={{
-          url: "https://api-mto-stage.lahta-spb.ru",
+          url: "",
           // documentId: "67274a79-6319-4155-a188-e5442c854238",
           documentId: "ec08aa7a-f8ba-4630-b698-855a78bc9db8",
           // defaultChatId: "8b6ccb60-8578-40d6-bbaa-02894f56fb93",

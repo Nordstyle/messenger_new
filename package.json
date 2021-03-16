@@ -1,14 +1,14 @@
 {
-  "name": "@stecpoint/messenger",
+  "name": "messenger",
   "version": "2.0.75",
-  "description": "messenger for GPM circuit",
+  "description": "messenger",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "jsnext:main": "build/index.es.js",
   "scripts": {
     "start": "rollup -c -w",
     "build": "rollup -c",
-    "storybook": "start-storybook -p 9000 --https --ssl-cert ./stecpoint.crt --ssl-key ./stecpoint.key",
+    "storybook": "start-storybook -p 9000 --https",
     "build-storybook": "build-storybook",
     "test": "echo \"Error: no test specified\" && exit 1",
     "bump:patch": "npm version patch -m \"Upgrade to %s for new build\"",
@@ -84,8 +84,7 @@
     "webfontloader": "^1.6.28"
   },
   "repository": {
-    "type": "git",
-    "url": "git@192.168.0.21:GPM/frontend/messenger.git"
+    "type": "git"
   },
   "keywords": [
     "chat",
