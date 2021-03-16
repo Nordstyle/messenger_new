@@ -1,77 +1,108 @@
 import React from "react";
-import { Box, makeStyles } from "@material-ui/core";
+import {
+  Box,
+  makeStyles,
+  Theme,
+  createStyles,
+  useTheme,
+} from "@material-ui/core";
 import clsx from "clsx";
-import { ITheme } from "../theme";
+import { PinnedIcon } from "../helpers/SvgComponents/PinnedIcon";
+import { MessengerTooltip } from "./MessengerTooltip";
 
-import { ReactComponent as PinnedIcon } from "../assets/pinned.svg";
-
-const useStyles = makeStyles((theme: ITheme) => ({
-  root: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  container: {
-    cursor: "pointer",
-    transition: "0.2s",
-    padding: theme.spacing(1, 2),
-    "&:hover": {
-      backgroundColor: theme.palette.themeColors.primary,
-    },
-  },
-  title: {
-    fontSize: "14px",
-    lineHeight: "20px",
-  },
-  name: {
-    fontSize: "12px",
-    lineHeight: "16px",
-    fontWeight: "normal",
-    padding: "2px 0",
-  },
-  message: {
-    fontSize: "12px",
-    lineHeight: "16px",
-    fontWeight: "normal",
-    color: theme.palette.text.secondary,
-  },
-  ellepsis: {
-    width: "100%",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  },
-}));
+const useStyles = makeStyles(
+  (theme: Theme) =>
+    createStyles({
+      title: {
+        fontSize: "14px",
+        lineHeight: "20px",
+      },
+      name: {
+        fontSize: "12px",
+        lineHeight: "16px",
+        fontWeight: "normal",
+        padding: "2px 0",
+      },
+      message: {
+        fontSize: "12px",
+        lineHeight: "16px",
+        fontWeight: "normal",
+        color: theme.palette.text.secondary,
+      },
+      ellepsis: {
+        width: "100%",
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+      },
+      container: {
+        width: "100%",
+        cursor: "pointer",
+        transition: "0.2s",
+        padding: theme.spacing(1, 2),
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        "&:hover": {
+          backgroundColor: theme.themeColors.primary,
+        },
+      },
+    }),
+  { name: "MessengerChatItem" }
+);
 
 interface MessengerChatItem {
-  title: string;
+  chatName: string;
   name: string;
   message?: string;
-  pinned?: boolean;
+  pinned: boolean;
+  isActive: boolean;
+  isHidden: boolean;
+  onClick: () => void;
 }
 
 export const MessengerChatItem: React.FC<MessengerChatItem> = (props) => {
-  const { title, name, message, pinned } = props;
+  const {
+    chatName,
+    name,
+    message,
+    pinned,
+    isActive,
+    isHidden,
+    onClick,
+  } = props;
   const classes = useStyles();
+  const theme = useTheme();
+
+  if (isHidden) return null;
 
   return (
-    <Box className={classes.root}>
-      <Box className={classes.container}>
+    <Box
+      className={classes.container}
+      style={{
+        backgroundColor: isActive ? theme.themeColors.primary : "",
+      }}
+      onClick={onClick}
+    >
+      <MessengerTooltip title={chatName}>
         <Box
-          title={title}
           className={clsx([classes.title, classes.ellepsis])}
           fontWeight={500}
         >
-          {title}
+          {chatName}
         </Box>
-        <Box title={name} className={clsx([classes.name, classes.ellepsis])}>
-          {name}
+      </MessengerTooltip>
+      <MessengerTooltip title={name}>
+        <Box className={clsx([classes.name, classes.ellepsis])}>{name}</Box>
+      </MessengerTooltip>
+      <MessengerTooltip title={message ?? ""}>
+        <Box className={clsx([classes.message, classes.ellepsis])}>
+          {pinned && (
+            <Box component="span" mr="2px">
+              <PinnedIcon />
+            </Box>
+          )}
+          {message}
         </Box>
-        <Box
-          title={message}
-          className={clsx([classes.message, classes.ellepsis])}
-        >
-          {pinned && <PinnedIcon />} {message}
-        </Box>
-      </Box>
+      </MessengerTooltip>
     </Box>
   );
 };

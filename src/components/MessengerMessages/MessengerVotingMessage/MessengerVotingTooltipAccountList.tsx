@@ -1,18 +1,22 @@
 import React from "react";
-import { Grid, makeStyles } from "@material-ui/core";
-import { VotedAccount } from "../../../types";
+import { Grid, makeStyles, createStyles } from "@material-ui/core";
+import { Voter } from "../../../types";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    fontSize: "12px",
-    lineHeight: "14px",
-    fontWeight: "normal",
-    "letter-spacing": "0.2px",
-  },
-}));
+const useStyles = makeStyles(
+  () =>
+    createStyles({
+      root: {
+        fontSize: "12px",
+        lineHeight: "14px",
+        fontWeight: "normal",
+        "letter-spacing": "0.2px",
+      },
+    }),
+  { name: "MessengerVotingTooltipAccountList" }
+);
 
 interface MessengerVotingTooltipAccountListProps {
-  voted: VotedAccount[];
+  voted: Voter[];
   title?: string;
 }
 

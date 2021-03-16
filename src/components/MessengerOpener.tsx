@@ -1,28 +1,33 @@
 import React from "react";
-import { Box, Drawer, DrawerProps, makeStyles } from "@material-ui/core";
+import { Box, Drawer, makeStyles, createStyles } from "@material-ui/core";
 import { useStore } from "effector-react";
+import { DrawerProps } from "@material-ui/core/Drawer";
 import { $widthSettings } from "../stores/resize.effector";
 import { useResize } from "../hooks/useResize";
 
 interface MessengerOpener extends DrawerProps {}
 
-const useStyles = makeStyles(() => ({
-  paper: {
-    background: "transparent",
-    boxShadow: "none",
-  },
-  resizer: {
-    position: "absolute",
-    left: "44px",
-    top: 0,
-    bottom: 0,
-    width: "4px",
-    height: "100%",
-    userSelect: "none",
-    cursor: "col-resize",
-    zIndex: 100,
-  },
-}));
+const useStyles = makeStyles(
+  () =>
+    createStyles({
+      paper: {
+        background: "transparent",
+        boxShadow: "none",
+      },
+      resizer: {
+        position: "absolute",
+        left: "44px",
+        top: 0,
+        bottom: 0,
+        width: "4px",
+        height: "100%",
+        userSelect: "none",
+        cursor: "col-resize",
+        zIndex: 100,
+      },
+    }),
+  { name: "MessengerOpener" }
+);
 
 export const MessengerOpener: React.FC<MessengerOpener> = (props) => {
   const { children, ...restProps } = props;
@@ -33,6 +38,7 @@ export const MessengerOpener: React.FC<MessengerOpener> = (props) => {
   return (
     <Drawer
       {...restProps}
+      disablePortal
       PaperProps={{
         style: {
           maxWidth: "100%",

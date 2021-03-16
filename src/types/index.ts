@@ -1,147 +1,145 @@
-export interface Author {
-  authorId: number;
-  email: string;
-  firstName: string;
-  lastName: string;
-  middleName: string;
-}
-
 export interface MessageType {
   id: number;
   name: string;
 }
 
 export interface File {
-  contentType: string;
-  fileName: string;
-  url: string;
-  lenght: number;
-  extension: Nullable<string>;
-}
-
-export interface Poll {
-  id: string;
-  name: string;
-  options: PollOptions;
-}
-
-export interface PollOptions {
-  id: string;
-  name: string;
-  contractors: Contractor[];
-  users: User[];
-}
-
-export interface PollStateOption {
-  pollOptionId: string;
-  users: User[];
+  contentType: Nullable<string>;
+  fileName: Nullable<string>;
+  url: Nullable<string>;
+  extension?: Nullable<string>;
 }
 
 export interface Contractor {
   contractorName: string;
   contractorId: number;
-  priceOffer: number;
-  deviationBestPrice: number;
-  term: string;
-  termDeviation: number;
+  decisionId: string;
   defermentPayment: number;
   defermentDeviation: number;
+  protocolNumber: string;
+  priceOffer: number;
+  deviationBestPrice: number;
+  term: Nullable<string>;
+  termDeviation: number;
+  termLimit: number;
   percentDifferentByPurchase: number;
   percentDifferentByBestContractorOffer: number;
-  termLimit: number;
 }
 
 export interface User {
-  accountId: number;
-  email: string;
-  firstName: string;
-  lastName: string;
-  middleName: string;
-  isLike: boolean;
+  id: number;
+  email: Nullable<string>;
+  firstName: Nullable<string>;
+  lastName: Nullable<string>;
+  middleName: Nullable<string>;
+  organizations: Organization[];
+}
+
+export interface Organization {
+  id: number;
+  name: string;
 }
 
 export interface Message {
-  id: number;
-  date: string;
-  content: string;
-  messageType: MessageType;
-  author: Author;
-  file: File;
-  poll: Poll;
-  userCount: number;
-  isClosed: boolean;
+  chatId: string;
+  id: string;
+  created: string;
+  content: Nullable<string>;
+  messageType: Nullable<MessageType>;
+  author: Nullable<User>;
+  file: Nullable<File>;
+  poll: Nullable<Poll>;
+  userCount?: number;
+  isClosed?: boolean;
+}
+
+export interface ShortMessage {
+  author: Nullable<User>;
+  id: string;
+  message: Nullable<string>;
 }
 
 export interface Chat {
-  chatId: number;
-  parentId: number;
+  id: string;
+  parentId: Nullable<string>;
+  name: Nullable<string>;
+  chatType: Nullable<ChatType>;
+  chatStatus: ChatStatus;
+  lastMessage: Nullable<ShortMessage>;
+  childChats: Chat[];
+  modified: Nullable<string>;
+  contextType: ChatContextType;
+  pinnedMessage: Nullable<ShortMessage>;
+}
+
+export interface ChatContextType {
+  id: number;
+  mnemonic: string;
   name: string;
-  chatType: ChatType;
-  status: ChatStatus;
-  message: Message;
-  children: Chat[];
 }
 
 export interface ChatType {
   id: number;
-  name: string;
-  description: string;
+  name: Nullable<string>;
 }
 
 export interface ChatStatus {
   id: number;
+  name: Nullable<string>;
+}
+export interface Poll {
+  id: string;
   name: string;
-  description: string;
+  options: PollOption[];
+  pollStatus: PollStatus;
+  voters: Voter[];
+  votersCount: number;
 }
 
-export interface VotingClient {
-  votingId: string;
-  name: string;
-  votingObjects: VotingObject[];
-  accountCount: number;
-  isClosed: boolean; // запрещается голосовать в чате комиссии из-за отказа от проведения закупки
+export interface Voter {
+  id: number;
+  firstName: Nullable<string>;
+  lastName: Nullable<string>;
+  middleName: Nullable<string>;
+  isLike: boolean;
+  login: Nullable<string>;
 }
 
-export interface VotingObject {
-  variantId: string;
+export interface PollOption {
+  id: string;
   name: string;
-  contractors: VotingContractor[];
-  accounts: VotedAccount[];
+  pollMeta: PollMeta;
 }
 
-export interface VotingContractor {
+export interface PollStatus {
+  id: number;
+  name: string;
+}
+
+export interface Voters {}
+
+export interface PollMeta {
   contractorName: string;
   contractorId: number;
-  priceOffer?: number; // ценовое предложение
-  deviationBestPrice?: number; // отклонение от лучших ц.п. - не используется, вместо него - percentDifferentByPurchase
-  term?: string; // срок поставки (DateTime) - уже не используется
-  termLimit?: number; // срок поставки
-  termDeviation?: number; // срок поставки - отклонение - уже не используется
-  defermentPayment?: number; // отсрочка платежа
-  defermentDeviation?: number; // отклонение отсрочки платежа
+  decisionId: string;
+  defermentPayment: number;
+  defermentDeviation: number;
+  protocolNumber: string;
+  priceOffer: number;
+  deviationBestPrice: number;
+  term: Nullable<string>;
+  termDeviation: number;
+  termLimit: number;
+  percentDifferentByPurchase: number;
   percentDifferentByBestContractorOffer: number;
-  percentDifferentByPurchase: number; // отклонение от лучших ц.п.
 }
 
-export interface UpdatedVotingMessage {
-  chatId: number;
-  messageId: number;
-  documentId: string;
-  votingId: string;
-  stateVotingObjects: StateVotingObject[];
-}
-
-export interface StateVotingObject {
-  variantId: string;
-  accounts: VotedAccount[];
-  like: boolean;
-}
-
-export interface VotedAccount {
-  accountId: number;
-  email: string;
-  firstName: string;
-  lastName: string;
-  middleName: string;
-  isLike?: boolean; // голос "за" или "против"
+export interface PollVoter {
+  id: string;
+  pollId: string;
+  pollOptionId: Nullable<string>;
+  voterId: number;
+  voter: User;
+  isLike: boolean;
+  comment: string;
 }

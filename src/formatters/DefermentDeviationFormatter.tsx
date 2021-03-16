@@ -6,16 +6,17 @@ import {
   createStyles,
   useTheme,
 } from "@material-ui/core";
-import { ITheme } from "../theme";
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      "& .MuiGrid-item": {
-        paddingLeft: "4px",
+const useStyles = makeStyles(
+  () =>
+    createStyles({
+      root: {
+        "& .MuiGrid-item": {
+          paddingLeft: "4px",
+        },
       },
-    },
-  })
+    }),
+  { name: "DefermentDeviationFormatter" }
 );
 
 interface DefermentDeviationFormatter {
@@ -25,16 +26,16 @@ interface DefermentDeviationFormatter {
 
 const DefermentDeviationFormatter = (props: DefermentDeviationFormatter) => {
   const { value, deviation } = props;
-  const theme: ITheme = useTheme();
+  const theme = useTheme();
   const aboveZero = value >= 0;
-  const color = aboveZero
-    ? theme.palette.themeColors.success
-    : theme.palette.themeColors.fail;
+  const color = aboveZero ? theme.themeColors.success : theme.themeColors.fail;
 
   const classes = useStyles();
   return (
     <Grid container alignItems="center" className={classes.root}>
-      <Grid item>{`${value} дн.`}</Grid>
+      <Grid item>
+        <Box fontSize="12px">{`${value} дн.`}</Box>
+      </Grid>
       <Grid item>/</Grid>
       <Grid item>
         <Box color={color} display="inline" fontSize="12px">

@@ -1,22 +1,23 @@
 import { ServiceBase } from "./ServiceBase";
-import { PollStateOption } from "../types";
+import { Locations } from "../constants";
+import { PollOption } from "../types";
 
 interface PollParams {
   pollId: string;
   pollOptionId: string;
   like: boolean;
-  comment: string;
+  comment: Nullable<string>;
 }
 
 interface GetPollResponse {
   chatId: number;
   messageId: number;
   pollId: string;
-  pollStateOptions: PollStateOption;
+  pollStateOptions: PollOption;
 }
 
 export default class PollService extends ServiceBase {
-  protected static BASE_URL = "/poll";
+  protected static BASE_URL = `${Locations.hub}/api/v1/poll`;
 
   public static poll(params: PollParams) {
     return this.post("", params);

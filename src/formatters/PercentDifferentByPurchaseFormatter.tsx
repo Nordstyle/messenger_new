@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Grid, Icon, useTheme } from "@material-ui/core";
 
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
-import { ITheme } from "../theme";
 
 const formatNumberToCurrency = (value: number = 0) =>
   `${value ? value.toLocaleString() : value}`;
@@ -15,11 +14,9 @@ const PercentDifferentByPurchaseFormatter = (
   props: PercentDifferentByPurchaseFormatter
 ) => {
   const { value } = props;
-  const theme: ITheme = useTheme();
+  const theme = useTheme();
   const aboveZero = value >= 0;
-  const color = aboveZero
-    ? theme.palette.themeColors.success
-    : theme.palette.themeColors.fail;
+  const color = aboveZero ? theme.themeColors.success : theme.themeColors.fail;
 
   return (
     <Grid container alignItems="center" style={{ color, height: "16px" }}>

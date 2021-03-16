@@ -1,16 +1,20 @@
 import React, { PropsWithChildren } from "react";
 import { Box, Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    width: "100%",
-    marginTop: 0,
-    "& .MuiGrid-item": {
-      fontSize: "12px",
-    },
-  },
-}));
+const useStyles = makeStyles(
+  () =>
+    createStyles({
+      root: {
+        width: "100%",
+        marginTop: 0,
+        "& .MuiGrid-item": {
+          fontSize: "12px",
+        },
+      },
+    }),
+  { name: "MessengerVotingTextLine" }
+);
 
 interface MessengerVotingTextLine {
   title: React.ReactNode;

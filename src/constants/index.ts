@@ -7,3 +7,9 @@ export enum ModuleName {
   BlueReport = 5,
   MarketVote = 6,
 }
+
+export enum Locations {
+  fileStorage = "/filestorage-service",
+  hub = "/messenger-hub-service",
+  singalR = "/messenger-hub-service/messenger",
+}

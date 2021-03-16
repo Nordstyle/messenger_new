@@ -1,8 +1,9 @@
-import { ServiceBase } from "./ServiceBase";
+import { ResponseData, ServiceBase } from "./ServiceBase";
 import { Message } from "../types";
+import { Locations } from "../constants";
 
-interface GetMessagesParams {
-  chatId: number;
+export interface SendMessageParams {
+  chatId: Nullable<string>;
   content: string;
 }
 
@@ -10,9 +11,9 @@ interface GetMessagesByChatParams {
   pageIndex: number;
   pageSize: number;
   filter: {
-    chatId: number;
-    authorId: number;
-    search: string;
+    chatId: string;
+    authorId?: number;
+    search?: string;
   };
 }
 
@@ -22,16 +23,15 @@ interface MessagesByChatResponse {
 }
 
 interface MessageFilesParams {
-  chatId: number;
+  chatId: string;
   link: string;
-  description: string;
 }
 
 export default class MessageService extends ServiceBase {
-  protected static BASE_URL = "/messages";
+  protected static BASE_URL = `${Locations.hub}/api/v1/messages`;
 
-  public static getMessages(params: GetMessagesParams) {
-    return this.post("", params);
+  public static sendMessage(params: SendMessageParams) {
+    return this.post<ResponseData<string>>("", params);
   }
 
   public static getMessagesByChat(params: GetMessagesByChatParams) {
@@ -43,6 +43,6 @@ export default class MessageService extends ServiceBase {
   }
 
   public static messageFiles(params: MessageFilesParams) {
-    return this.post<Message>("/files", params);
+    return this.post<ResponseData<string>>("/files", params);
   }
 }

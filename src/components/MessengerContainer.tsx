@@ -1,21 +1,25 @@
 import React from "react";
-import { Grid, Box, makeStyles } from "@material-ui/core";
+import { Grid, Box, makeStyles, createStyles } from "@material-ui/core";
 import { MessengerChatList } from "./MessengerChatList";
 import { MessengerChatContainer } from "./MessengerChatContainer";
 
-const useStyles = makeStyles(() => ({
-  fullHeight: {
-    height: "100%",
-  },
-  chatWrapper: {
-    width: "60%",
-    height: "100%",
-  },
-  listWrapper: {
-    width: "40%",
-    height: "100%",
-  },
-}));
+const useStyles = makeStyles(
+  () =>
+    createStyles({
+      fullHeight: {
+        height: "100%",
+      },
+      chatWrapper: {
+        width: "60%",
+        height: "100%",
+      },
+      listWrapper: {
+        width: "40%",
+        height: "100%",
+      },
+    }),
+  { name: "MessengerContainer" }
+);
 
 export const MessengerContainer: React.FC = () => {
   const classes = useStyles();

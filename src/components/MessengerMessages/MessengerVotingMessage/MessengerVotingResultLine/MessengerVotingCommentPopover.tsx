@@ -5,8 +5,10 @@ import {
   TextField,
   IconButton,
   makeStyles,
+  createStyles,
 } from "@material-ui/core";
-import { ReactComponent as SendIcon } from "../../../../assets/send.svg";
+
+import { SendIcon } from "../../../../helpers/SvgComponents/SendIcon";
 
 interface MessengerVotingCommentPopoverProps {
   // eslint-disable-next-line no-unused-vars
@@ -15,18 +17,22 @@ interface MessengerVotingCommentPopoverProps {
   onClose: () => void;
 }
 
-const useStyles = makeStyles(() => ({
-  root: {
-    width: "300px",
-    marginRight: "16px",
-  },
-  inputRoot: {
-    padding: "10px 12px",
-  },
-  inputLabel: {
-    transform: "translate(14px, 11px) scale(1)",
-  },
-}));
+const useStyles = makeStyles(
+  () =>
+    createStyles({
+      root: {
+        width: "300px",
+        marginRight: "16px",
+      },
+      inputRoot: {
+        padding: "10px 12px",
+      },
+      inputLabel: {
+        transform: "translate(14px, 11px) scale(1)",
+      },
+    }),
+  { name: "MessengerVotingCommentPopover" }
+);
 
 export const MessengerVotingCommentPopover: React.FC<MessengerVotingCommentPopoverProps> = (
   props
@@ -66,7 +72,6 @@ export const MessengerVotingCommentPopover: React.FC<MessengerVotingCommentPopov
           defaultValue=""
           variant="outlined"
           className={classes.root}
-          classes={{}}
           InputLabelProps={{
             classes: {
               root: classes.inputLabel,

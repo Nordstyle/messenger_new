@@ -1,7 +1,6 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-
-import { ReactComponent as Loader } from "../assets/loader.svg";
+import { LoaderIcon } from "../helpers/SvgComponents/LoaderIcon";
 
 interface MessengerLoaderProps {
   size: number;
@@ -24,7 +23,7 @@ export const MessengerLoader: React.FC<MessengerLoaderProps> = (props) => {
         zIndex: 1000000,
       }}
     >
-      <Loader style={{ width: size }} />
+      <LoaderIcon size={size} />
     </Box>
   );
 };

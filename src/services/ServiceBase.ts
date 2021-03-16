@@ -10,8 +10,14 @@ export interface ProcessingResult<T> {
   }[];
 }
 
+export interface ResponseData<T> {
+  success: boolean;
+  value: T;
+  errors: string[];
+}
+
 const api: AxiosInstance = axios.create({
-  baseURL: null,
+  baseURL: undefined,
   timeout: 300 * 1000,
 });
 

@@ -1,18 +1,18 @@
 import React from "react";
 import { Box, Grid, useTheme } from "@material-ui/core";
-import { VotedAccount } from "../../../../types";
+import { Voter } from "../../../../types";
 import MessengerVotingGroupInfo from "../MessengerVotingGroupInfo";
 import { MessengerVotingResultTotal } from "./MessengerVotingResultTotal";
 
 interface MessengerVotingResultLineProps {
-  voted: VotedAccount[]; // проголосовавшие за
-  votedAgainst: VotedAccount[]; // проголосовавшие против
-  onLike: () => void; // клик на иконку "Лайк"
+  voted: Voter[]; // проголосовавшие за
+  votedAgainst: Voter[]; // проголосовавшие против
   // eslint-disable-next-line no-unused-vars
-  onDislike: (comment: string) => void; // клик на иконку "Дизлайк"
-  total: VotedAccount[]; // полный список голосующих
+  total: Voter[]; // полный список голосующих
   isUserVoted: boolean; // признак того, проголосовал ли уже пользователь
   isClosed: boolean;
+  pollId: string;
+  pollOptionId: string;
 }
 
 export const MessengerVotingResultLine: React.FC<MessengerVotingResultLineProps> = (
@@ -24,8 +24,8 @@ export const MessengerVotingResultLine: React.FC<MessengerVotingResultLineProps>
     total,
     isUserVoted,
     isClosed,
-    onLike,
-    onDislike,
+    pollId,
+    pollOptionId,
   } = props;
   const theme = useTheme();
 
@@ -39,10 +39,10 @@ export const MessengerVotingResultLine: React.FC<MessengerVotingResultLineProps>
       >
         <Grid item>
           <MessengerVotingResultTotal
+            pollId={pollId}
+            pollOptionId={pollOptionId}
             voted={voted}
             votedAgainst={votedAgainst}
-            onLike={onLike}
-            onDislike={onDislike}
             isUserVoted={isUserVoted}
             isClosed={isClosed}
           />

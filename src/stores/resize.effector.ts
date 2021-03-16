@@ -6,7 +6,7 @@ export const resetSizes = createEvent("reset sizes");
 
 export const $widthSettings = createStore({
   isFull: false,
-  containerWidth: 768,
+  containerWidth: 776,
 })
   .on(setSize, (state, size) => ({
     ...state,
@@ -16,11 +16,3 @@ export const $widthSettings = createStore({
     ...state,
     isFull: mode,
   }));
-
-// sample($isFullMode, $sizes, (isFullMode, size) => {
-//   if (!isFullMode) setSize(768);
-//   return size;
-// });
-
-// $widthSettings.watch((widthSettings) => console.log({ widthSettings }));
-// $sizes.watch((sizes) => console.log({ sizes }));
